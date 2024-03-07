@@ -405,6 +405,7 @@ export type SearchCategory =
   | 'caregivingManagerName'
   | 'patientPhoneNumber'
   | 'organizationName'
+  | 'caregiverName'
 
 /** 입출금 구분 */
 export type TransactionType = 'DEPOSIT' | 'WITHDRAWAL'
