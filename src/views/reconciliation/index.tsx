@@ -62,7 +62,7 @@ const ReconciliationView = (props: IReconciliationViewProps): ReactElement => {
         />
         <SearchBox
           categoryOptions={reconciliationSearchCategories}
-          defaultCategory="accidentNumber"
+          defaultCategory="patientName"
           onClickSearch={handleOnClickSearch}
         />
       </Box>
