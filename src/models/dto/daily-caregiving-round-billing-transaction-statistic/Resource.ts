@@ -1,0 +1,5 @@
+import DailyCaregivingRoundTransactionStatisticResource from '../daily-caregiving-round-transaction-statistic/Resource'
+
+class DailyCaregivingRoundBillingTransactionStatisticResource extends DailyCaregivingRoundTransactionStatisticResource {}
+
+export default DailyCaregivingRoundBillingTransactionStatisticResource

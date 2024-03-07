@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~*": ["src/*"],
+      "api/*": ["api/*", ".temp/api/*"],
+      "*": ["public/*", "src/*"],
+      "test-utils": ["./test-utils.tsx"],
+      "@caredoc/utils-web": ["src/libs/utils-web/index.ts"],
+      "@caredoc/templates-web": ["src/libs/templates-web/index.ts"],
+      "@caredoc/ui-master": ["src/libs/ui-master/src/index.ts"],
+      "@caredoc/ui-web": ["src/libs/ui-web/index.ts"],
+      "@caredoc/utils": ["src/libs/utils/index.ts"]
+    },
+    "types": ["@types/wicg-file-system-access" ,"jest"],
+    "strictPropertyInitialization": true,
+    "useDefineForClassFields": true,
+    "target": "ES2015",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "jest-setup.js",
+    "jest.config.js"
+  ],
+  "exclude": ["node_modules"]
+}

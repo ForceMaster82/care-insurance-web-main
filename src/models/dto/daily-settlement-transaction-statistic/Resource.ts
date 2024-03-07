@@ -1,0 +1,5 @@
+import DailyTransactionStatisticResource from '../daily-transaction-statistic/Resource'
+
+class DailySettlementTransactionStatisticResource extends DailyTransactionStatisticResource {}
+
+export default DailySettlementTransactionStatisticResource

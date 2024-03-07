@@ -1,0 +1,104 @@
+import {NextPage} from 'next'
+import React, {useEffect, useState} from 'react'
+import {useRouter} from 'next/router'
+import {Loading} from '@caredoc/templates-web'
+import {observer} from 'mobx-react-lite'
+import {reaction, toJS} from 'mobx'
+import {stringify} from 'qs'
+import {isServer} from '@caredoc/utils-web'
+import {RECEPTIONS_PATH} from '../../constants/route-paths'
+import SearchFilterStore, {SearchFilter} from '../../stores/SearchFilterStore'
+import {StatisticDailySettlementTransactionPageSearchFilterKey} from '../../types'
+import {formatDate, getToday} from '../../utils/date'
+import Layout from '~templates/layouts/Layout'
+import StatisticDailySettlementTransactionView from '~views/statistic-daily-settlement-transaction'
+import usePagination from '~hooks/use-pagination'
+import useDailySettlementTransactionStatistic from '~hooks/api/settlement/use-daily-settlement-transaction-statistic'
+import useDailyCaregivingRoundSettlementTransactionStatisticList from '~hooks/api/settlement/use-daily-caregiving-round-settlement-transaction-statistic-list'
+import {DEFAULT_PAGE_SIZE} from '~constants/data'
+
+const StatisticDailySettlementTransactionPage: NextPage = observer(() => {
+  const pageQuery = isServer() ? null : new URL(document.URL).searchParams
+  const pageNumberQueryValue = pageQuery?.get('page-number')
+
+  const router = useRouter()
+
+  const {pageNumber, setPageNumber, resetPageNumber} = usePagination(
+    pageNumberQueryValue ? Number(pageNumberQueryValue) : null,
+  )
+
+  const [searchFilterStore] = useState(
+    () =>
+      new SearchFilterStore<StatisticDailySettlementTransactionPageSearchFilterKey>(
+        {
+          DATE: pageQuery?.get('date') || formatDate(getToday()),
+        },
+      ),
+  )
+
+  const handleOnClickListItemAccidentNumber = (receptionId: string): void => {
+    const query = stringify(
+      {
+        ...searchFilterStore.toQueryData(),
+        'page-number': pageNumber,
+      },
+      {
+        arrayFormat: 'repeat',
+      },
+    )
+
+    router.replace({query}, undefined, {shallow: true})
+    router.push(RECEPTIONS_PATH.SETTLEMENTS(receptionId))
+  }
+
+  const totalTransactionAmount = useDailySettlementTransactionStatistic({
+    date: searchFilterStore.searchFilter.DATE,
+  })
+
+  const settlementTransactionList =
+    useDailyCaregivingRoundSettlementTransactionStatisticList({
+      date: searchFilterStore.searchFilter.DATE,
+      pageNumber,
+      pageSize: DEFAULT_PAGE_SIZE,
+    })
+
+  const handleOnChangeSearchFilter =
+    <K extends StatisticDailySettlementTransactionPageSearchFilterKey>(
+      key: K,
+    ) =>
+    (value: SearchFilter[K]) => {
+      searchFilterStore.set(key, value)
+    }
+
+  useEffect(() => {
+    const dispose = reaction(
+      () => toJS(searchFilterStore.searchFilter),
+      () => {
+        resetPageNumber()
+      },
+    )
+
+    return () => {
+      dispose()
+    }
+  }, [resetPageNumber, searchFilterStore.searchFilter])
+
+  return (
+    <Layout currentPage="CARE_STATUS">
+      {settlementTransactionList ? (
+        <StatisticDailySettlementTransactionView
+          onChangeSearchFilter={handleOnChangeSearchFilter}
+          onClickListItemAccidentNumber={handleOnClickListItemAccidentNumber}
+          searchFilter={toJS(searchFilterStore.searchFilter)}
+          setPageNumber={setPageNumber}
+          settlementTransactionList={settlementTransactionList}
+          totalTransactionAmount={totalTransactionAmount}
+        />
+      ) : (
+        <Loading />
+      )}
+    </Layout>
+  )
+})
+
+export default StatisticDailySettlementTransactionPage
