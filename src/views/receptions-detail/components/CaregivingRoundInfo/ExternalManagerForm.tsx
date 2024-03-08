@@ -12,7 +12,7 @@ import {sizes} from '@caredoc/ui-master'
 import {isToday} from 'date-fns'
 import Card from '../../../../components/Card'
 import ReceptionCaregivingRoundResource from '../../../../models/dto/reception-caregiving-round/Resource'
-import {bankList} from '../../../../constants'
+import {bankList, ORGANIZATION_TYPE} from '../../../../constants'
 import ReceptionCaregivingRoundInput from '../../../../models/dto/reception-caregiving-round/Input'
 import {receptionCaregivingRoundConstraints} from '../../../../constraints/reception-caregiving-round'
 import {formatDateTimeText, getDateDistance} from '../../../../utils/date'
@@ -29,6 +29,9 @@ import {
 } from '../../../../utils/formatter'
 import {CaregivingRoundClosingReasonType} from '../../../../types'
 import SectionHeader from './SectionHeader'
+import {getExternalCaregivingOrganizationOptions} from "utils/option";
+import useExternalCaregivingOrganizationList
+  from "hooks/api/external-caregiving-organization/use-external-caregiving-organization-list";
 
 interface IProps {
   data: ReceptionCaregivingRoundResource
@@ -60,6 +63,22 @@ const CaregivingRoundInfoExternalManagerForm = (
       'caregiverInfo.caregiverOrganizationId',
     ),
   })
+
+  const affiliatedList = useExternalCaregivingOrganizationList({
+    externalCaregivingOrganizationType: 'AFFILIATED',
+  })
+  const organizationList = useExternalCaregivingOrganizationList({
+    externalCaregivingOrganizationType: 'ORGANIZATION',
+  })
+
+  const organizationOptions = useMemo(
+      () => [
+        {data: null, label: ORGANIZATION_TYPE.INTERNAL},
+        ...getExternalCaregivingOrganizationOptions(affiliatedList),
+        ...getExternalCaregivingOrganizationOptions(organizationList),
+      ],
+      [affiliatedList, organizationList],
+  )
 
   const isStartDateTimeEditable =
     previousRoundClosingReasonType !== 'FINISHED_CONTINUE'
@@ -260,10 +279,15 @@ const CaregivingRoundInfoExternalManagerForm = (
             <Card.RowGroup>
               <Card.Row>
                 <Card.Item title="간병인 소속">
-                  <Card.Input
-                    disabled
-                    readonly
-                    value={selectedExternalOrganization?.name}
+                  {/*<Card.Input*/}
+                  {/*  value={selectedExternalOrganization?.name}*/}
+                  {/*/>*/}
+                  <ComboBox
+                      items={organizationOptions}
+                      onSelect={(value): void =>
+                          setValue('caregiverInfo.caregiverOrganizationId', value)
+                      }
+                      value={watch('caregiverInfo.caregiverOrganizationId')}
                   />
                 </Card.Item>
                 <Card.Item title="간병인명">
