@@ -31,7 +31,8 @@ const StatisticDailySettlementTransactionPage: NextPage = observer(() => {
     () =>
       new SearchFilterStore<StatisticDailySettlementTransactionPageSearchFilterKey>(
         {
-          DATE: pageQuery?.get('date') || formatDate(getToday()),
+          // DATE: pageQuery?.get('date') || formatDate(getToday()),
+          DATE: pageQuery?.get('date') || formatDate(new Date('2023-09-26')),
         },
       ),
   )

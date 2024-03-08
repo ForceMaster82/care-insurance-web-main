@@ -159,7 +159,14 @@ export const caregivingSearchCategories: IComboBoxItemData<SearchCategory>[] = [
   {data: 'accidentNumber', label: SEARCH_CATEGORY['accidentNumber']},
   {data: 'insuranceNumber', label: SEARCH_CATEGORY['insuranceNumber']},
   {data: 'patientName', label: SEARCH_CATEGORY['patientName']},
+  {data: 'caregiverName', label: SEARCH_CATEGORY['caregiverName']},
 ]
+
+/** 간병 현황 > 정산 입출금 현황 > 검색 카테고리 dailySettleTranSearchCategories */
+export const dailySettleTranSearchCategories: IComboBoxItemData<SearchCategory>[] = [
+    {data: 'patientName', label: SEARCH_CATEGORY['patientName']},
+]
+
 
 /** 정산 관리 - 정산 페이지 검색 카테고리 */
 export const settlementWaitingSearchCategories: IComboBoxItemData<SearchCategory>[] =

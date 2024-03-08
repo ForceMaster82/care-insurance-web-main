@@ -14,7 +14,7 @@ interface IProps {
 }
 
 export const GRID_TEMPLATE =
-  'minmax(80px, 2fr) repeat(2, minmax(160px, 4fr)) minmax(80px, 2fr) minmax(120px, 3fr) repeat(2, minmax(80px, 2fr)) repeat(5, minmax(120px, 3fr))'
+  'minmax(80px, 2fr) repeat(2, minmax(160px, 4fr)) minmax(80px, 2fr) minmax(120px, 3fr) repeat(3, minmax(80px, 2fr)) repeat(5, minmax(120px, 3fr))'
 
 const TABLE_TITLE = [
   '번호',
@@ -23,6 +23,7 @@ const TABLE_TITLE = [
   '고객명',
   '진행 상태',
   '간병차수',
+  '간병인명',    
   '간병기간',
   '간병상태',
   '정산상태',

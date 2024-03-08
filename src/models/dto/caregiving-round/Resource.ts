@@ -16,6 +16,8 @@ class CaregivingRoundResource {
 
   #caregivingRoundNumber: number
 
+  #caregiverName: string | null
+
   #caregivingProgressingStatus: CaregivingProgressingStatus
 
   #settlementProgressingStatus: SettlementProgressingStatus
@@ -31,6 +33,7 @@ class CaregivingRoundResource {
       id,
       receptionInfo,
       caregivingRoundNumber,
+      caregiverName,
       caregivingProgressingStatus,
       settlementProgressingStatus,
       billingProgressingStatus,
@@ -43,6 +46,7 @@ class CaregivingRoundResource {
       receptionInfo,
     )
     this.#caregivingRoundNumber = caregivingRoundNumber
+    this.#caregiverName = caregiverName
     this.#caregivingProgressingStatus = caregivingProgressingStatus
     this.#settlementProgressingStatus = settlementProgressingStatus
     this.#billingProgressingStatus = billingProgressingStatus
@@ -60,6 +64,10 @@ class CaregivingRoundResource {
 
   get caregivingRoundNumber(): number {
     return this.#caregivingRoundNumber
+  }
+
+  get caregiverName(): string | null {
+    return this.#caregiverName
   }
 
   get caregivingProgressingStatus(): CaregivingProgressingStatus {

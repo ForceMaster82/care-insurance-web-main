@@ -75,6 +75,7 @@ const SearchResultListItem = (props: IProps): ReactElement => {
         status={data.receptionInfo.receptionProgressingStatus}
       />
       <EllipsisText>{data.caregivingRoundNumber}</EllipsisText>
+      <EllipsisText>{data.caregiverName}</EllipsisText>
       <EllipsisText>
         {data.expectedCaregivingPeriod &&
           generatePeriodText(data.expectedCaregivingPeriod, true)}

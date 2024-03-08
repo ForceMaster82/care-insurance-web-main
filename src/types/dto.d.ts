@@ -520,6 +520,7 @@ export interface ICaregivingRound {
   id: string
   receptionInfo: ICaregivingRoundReceptionInfo
   caregivingRoundNumber: number
+  caregiverName: string
   caregivingProgressingStatus: CaregivingProgressingStatus
   settlementProgressingStatus: SettlementProgressingStatus
   billingProgressingStatus: BillingProgressingStatus
