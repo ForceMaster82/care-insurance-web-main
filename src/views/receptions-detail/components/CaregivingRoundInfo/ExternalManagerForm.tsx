@@ -10,6 +10,8 @@ import {
 import {SubmitErrorHandler, SubmitHandler, useForm} from 'react-hook-form'
 import {sizes} from '@caredoc/ui-master'
 import {isToday} from 'date-fns'
+import {getExternalCaregivingOrganizationOptions} from 'utils/option'
+import useExternalCaregivingOrganizationList from 'hooks/api/external-caregiving-organization/use-external-caregiving-organization-list'
 import Card from '../../../../components/Card'
 import ReceptionCaregivingRoundResource from '../../../../models/dto/reception-caregiving-round/Resource'
 import {bankList, ORGANIZATION_TYPE} from '../../../../constants'
@@ -29,9 +31,6 @@ import {
 } from '../../../../utils/formatter'
 import {CaregivingRoundClosingReasonType} from '../../../../types'
 import SectionHeader from './SectionHeader'
-import {getExternalCaregivingOrganizationOptions} from "utils/option";
-import useExternalCaregivingOrganizationList
-  from "hooks/api/external-caregiving-organization/use-external-caregiving-organization-list";
 
 interface IProps {
   data: ReceptionCaregivingRoundResource
@@ -72,12 +71,12 @@ const CaregivingRoundInfoExternalManagerForm = (
   })
 
   const organizationOptions = useMemo(
-      () => [
-        {data: null, label: ORGANIZATION_TYPE.INTERNAL},
-        ...getExternalCaregivingOrganizationOptions(affiliatedList),
-        ...getExternalCaregivingOrganizationOptions(organizationList),
-      ],
-      [affiliatedList, organizationList],
+    () => [
+      {data: null, label: ORGANIZATION_TYPE.INTERNAL},
+      ...getExternalCaregivingOrganizationOptions(affiliatedList),
+      ...getExternalCaregivingOrganizationOptions(organizationList),
+    ],
+    [affiliatedList, organizationList],
   )
 
   const isStartDateTimeEditable =
@@ -283,11 +282,11 @@ const CaregivingRoundInfoExternalManagerForm = (
                   {/*  value={selectedExternalOrganization?.name}*/}
                   {/*/>*/}
                   <ComboBox
-                      items={organizationOptions}
-                      onSelect={(value): void =>
-                          setValue('caregiverInfo.caregiverOrganizationId', value)
-                      }
-                      value={watch('caregiverInfo.caregiverOrganizationId')}
+                    items={organizationOptions}
+                    onSelect={(value): void =>
+                      setValue('caregiverInfo.caregiverOrganizationId', value)
+                    }
+                    value={watch('caregiverInfo.caregiverOrganizationId')}
                   />
                 </Card.Item>
                 <Card.Item title="간병인명">
