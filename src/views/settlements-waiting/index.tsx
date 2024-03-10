@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react'
 import {Box, Button} from '@caredoc/ui-web'
 import SearchResultCount from '../../components/SearchResultCount'
-import {SearchCategory, SettlementWaitingPageSearchFilterkey} from '../../types'
+import {SearchCategory, SettlementWaitingPageSearchFilterKey} from '../../types'
 import SubPageTabBar from '../../components/SubPageTabBar'
 import {SETTLEMENTS_SUB_PAGE_TABS} from '../../constants/sub-page-tabs'
 import SearchPeriodPicker from '../../components/SearchPeriodPicker'
@@ -14,7 +14,7 @@ import {IPaginationResponse} from '~types/dto'
 import SettlementResource from '~models/dto/settlement/Resource'
 
 interface IProps {
-  onChangeSearchFilter: <K extends SettlementWaitingPageSearchFilterkey>(
+  onChangeSearchFilter: <K extends SettlementWaitingPageSearchFilterKey>(
     key: K,
   ) => (value: SearchFilter[K]) => void
   onClickCsvDownload: () => Promise<void>
@@ -22,7 +22,7 @@ interface IProps {
   onClickSettlementComplete: () => void
   onSelectAllListItem: (ids: string[]) => void
   onSelectListItem: (id: string) => void
-  searchFilter: Pick<SearchFilter, SettlementWaitingPageSearchFilterkey>
+  searchFilter: Pick<SearchFilter, SettlementWaitingPageSearchFilterKey>
   selectedListItemIds: string[]
   setPageNumber: (page: number) => void
   settlementListData?: IPaginationResponse<SettlementResource>

@@ -6,6 +6,8 @@ export type ReconciliationIssuedType = 'FINISH' | 'ADDITIONAL' | 'TRANSACTION'
 
 export type MessageStatusesCaregivingSatisfactionSurveyPageSearchFilterKey =
   | 'DATE'
+  | 'FROM'
+  | 'UNTIL'
   | 'SEARCH_CATEGORY'
   | 'SEARCH_KEYWORD'
 
@@ -33,7 +35,10 @@ export type StatisticMonthlyReconciliationPageSearchFilterKey =
 
 export type StatisticDailyBillingTransactionPageSearchFilterKey = 'DATE'
 
-export type StatisticDailySettlementTransactionPageSearchFilterKey = 'DATE'
+export type StatisticDailySettlementTransactionPageSearchFilterKey =
+  | 'DATE'
+  | 'SEARCH_CATEGORY'
+  | 'SEARCH_KEYWORD'
 
 export type ReconciliationPageSearchFilterKey =
   | 'ISSUED_AT_FROM'
@@ -66,7 +71,7 @@ export type SettlementInTransactionPageSearchFilterKey =
   | 'SEARCH_CATEGORY'
   | 'SEARCH_KEYWORD'
 
-export type SettlementWaitingPageSearchFilterkey =
+export type SettlementWaitingPageSearchFilterKey =
   | 'FROM'
   | 'UNTIL'
   | 'SEARCH_CATEGORY'

@@ -17,7 +17,7 @@ import {RECEPTIONS_PATH} from '../../constants/route-paths'
 import useSettlementUpdate from '../../hooks/api/settlement/use-settlement-update'
 import {ISettlementUpdate} from '../../types/dto'
 import {getInternalCaregivingManagerIdFromToken} from '../../utils/manage-token'
-import {SearchCategory, SettlementWaitingPageSearchFilterkey} from '../../types'
+import {SearchCategory, SettlementWaitingPageSearchFilterKey} from '../../types'
 import {fetcher, isLocalServerErrorType} from '../../utils/fetcher'
 import {SERVER_ERROR_MESSAGE} from '../../constants/server-error'
 import {getFilenameFromHttpHeaders} from '../../utils/get-filename-from-http-headers'
@@ -39,7 +39,7 @@ const SettlementsWaitingPage: NextPage = observer(() => {
 
   const [searchFilterStore] = useState(
     () =>
-      new SearchFilterStore<SettlementWaitingPageSearchFilterkey>({
+      new SearchFilterStore<SettlementWaitingPageSearchFilterKey>({
         FROM: pageQuery?.get('from') || formatDate(getToday()),
         SEARCH_CATEGORY: searchCategoryQueryValue || 'patientName',
         SEARCH_KEYWORD: pageQuery?.get('search-keyword') || '',
@@ -135,7 +135,7 @@ const SettlementsWaitingPage: NextPage = observer(() => {
   }
 
   const handleOnChangeSearchFilter =
-    <K extends SettlementWaitingPageSearchFilterkey>(key: K) =>
+    <K extends SettlementWaitingPageSearchFilterKey>(key: K) =>
     (value: SearchFilter[K]) => {
       searchFilterStore.set(key, value)
     }

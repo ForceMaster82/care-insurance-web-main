@@ -4,17 +4,23 @@ import {IDailyTransactionStatistic} from '~types/dto'
 import {fetcher} from '~utils/fetcher'
 
 interface IProps {
-  date: string
+  date: string,
+  searchCategory: string,
+  searchKeyword: string,
 }
 
 const useDailySettlementTransactionStatistic = ({
   date,
+  searchKeyword,
+  searchCategory,
 }: IProps): DailySettlementTransactionStatisticResource | undefined => {
+  const qt = searchKeyword ? `query=${searchCategory}:${searchKeyword}` : '';
+
   const {data} = useQuery({
     keepPreviousData: true,
     queryFn: () =>
       fetcher<IDailyTransactionStatistic[]>(
-        `/api/v1/daily-settlement-transaction-statistics?date=${date}`,
+        `/api/v1/daily-settlement-transaction-statistics?date=${date}&${qt}`,
       ),
     queryKey: ['daily-settlement-transaction-statistic', {date}],
     select: (response) =>

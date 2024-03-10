@@ -12,21 +12,19 @@ import Pagination from '~components/Pagination'
 import DailyCaregivingRoundSettlementTransaction from '~models/dto/daily-caregiving-round-settlement-transaction-statistic/Resource'
 import {IPaginationResponse} from '~types/dto'
 import DailySettlementTransactionStatisticResource from '~models/dto/daily-settlement-transaction-statistic/Resource'
+import {dailySettleTranSearchCategories} from '../../constants'
+import SearchBox from '../../components/SearchBox'
+import {SearchCategory} from '~types'
 
 interface IProps {
-  onChangeSearchFilter: <
-    K extends StatisticDailySettlementTransactionPageSearchFilterKey,
-  >(
+  onChangeSearchFilter: <K extends StatisticDailySettlementTransactionPageSearchFilterKey>(
     key: K,
   ) => (value: SearchFilter[K]) => void
   onClickListItemAccidentNumber: (receptionId: string) => void
-  searchFilter: Pick<
-    SearchFilter,
-    StatisticDailySettlementTransactionPageSearchFilterKey
-  >
   setPageNumber: (page: number) => void
   settlementTransactionList?: IPaginationResponse<DailyCaregivingRoundSettlementTransaction>
   totalTransactionAmount?: DailySettlementTransactionStatisticResource
+  searchFilter: Pick<SearchFilter, StatisticDailySettlementTransactionPageSearchFilterKey>
 }
 
 const StatisticDailySettlementTransactionView = (
@@ -41,6 +39,15 @@ const StatisticDailySettlementTransactionView = (
     setPageNumber,
   } = props
 
+
+  const handleOnClickSearch = (
+    category: SearchCategory,
+    keyword: string,
+  ): void => {
+    onChangeSearchFilter('SEARCH_CATEGORY')(category)
+    onChangeSearchFilter('SEARCH_KEYWORD')(keyword)
+  }
+
   return (
     <Box gap="lg" pb="xl" pt="sm" px="sm">
       <SubPageTabBar
@@ -53,6 +60,15 @@ const StatisticDailySettlementTransactionView = (
         required
         title="조회일자"
       />
+      <Box flexDirection="row" justifyContent="space-between">
+          <SearchBox
+              categoryOptions={dailySettleTranSearchCategories}
+              defaultCategory={searchFilter.SEARCH_CATEGORY}
+              defaultKeyword={searchFilter.SEARCH_KEYWORD}
+              onClickSearch={handleOnClickSearch}
+          />
+      </Box>
+
       {totalTransactionAmount && (
         <TransactionDashboard
           depositAmount={totalTransactionAmount.totalDepositAmount}

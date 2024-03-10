@@ -8,7 +8,7 @@ import {stringify} from 'qs'
 import {isServer} from '@caredoc/utils-web'
 import {RECEPTIONS_PATH} from '../../constants/route-paths'
 import SearchFilterStore, {SearchFilter} from '../../stores/SearchFilterStore'
-import {StatisticDailySettlementTransactionPageSearchFilterKey} from '../../types'
+import {CaregivingRoundsPageSearchFilterKey, StatisticDailySettlementTransactionPageSearchFilterKey} from '../../types'
 import {formatDate, getToday} from '../../utils/date'
 import Layout from '~templates/layouts/Layout'
 import StatisticDailySettlementTransactionView from '~views/statistic-daily-settlement-transaction'
@@ -16,6 +16,7 @@ import usePagination from '~hooks/use-pagination'
 import useDailySettlementTransactionStatistic from '~hooks/api/settlement/use-daily-settlement-transaction-statistic'
 import useDailyCaregivingRoundSettlementTransactionStatisticList from '~hooks/api/settlement/use-daily-caregiving-round-settlement-transaction-statistic-list'
 import {DEFAULT_PAGE_SIZE} from '~constants/data'
+import {SearchCategory} from '~types'
 
 const StatisticDailySettlementTransactionPage: NextPage = observer(() => {
   const pageQuery = isServer() ? null : new URL(document.URL).searchParams
@@ -33,6 +34,10 @@ const StatisticDailySettlementTransactionPage: NextPage = observer(() => {
         {
           // DATE: pageQuery?.get('date') || formatDate(getToday()),
           DATE: pageQuery?.get('date') || formatDate(new Date('2023-09-26')),
+            SEARCH_CATEGORY:
+                (pageQuery?.get('search-category') as SearchCategory | undefined) ||
+                'patientName',
+            SEARCH_KEYWORD: pageQuery?.get('search-keyword') || '',
         },
       ),
   )
@@ -54,6 +59,8 @@ const StatisticDailySettlementTransactionPage: NextPage = observer(() => {
 
   const totalTransactionAmount = useDailySettlementTransactionStatistic({
     date: searchFilterStore.searchFilter.DATE,
+      searchCategory: searchFilterStore.searchFilter.SEARCH_CATEGORY,
+      searchKeyword: searchFilterStore.searchFilter.SEARCH_KEYWORD,
   })
 
   const settlementTransactionList =
@@ -61,6 +68,8 @@ const StatisticDailySettlementTransactionPage: NextPage = observer(() => {
       date: searchFilterStore.searchFilter.DATE,
       pageNumber,
       pageSize: DEFAULT_PAGE_SIZE,
+      searchCategory: searchFilterStore.searchFilter.SEARCH_CATEGORY,
+      searchKeyword: searchFilterStore.searchFilter.SEARCH_KEYWORD,
     })
 
   const handleOnChangeSearchFilter =
