@@ -32,7 +32,7 @@ const useDailyCaregivingRoundSettlementTransactionStatisticList = (
 
     const searchQuery = formatSearchQuery(searchCategory, searchKeyword)
     //const qt = searchKeyword ? `query=${searchCategory}:${searchKeyword}` : '';
-
+    console.log('searchQuery === ' + searchQuery)
     const queryParams = getURLSearchParams([
         ...Object.entries({
             date,
@@ -41,6 +41,8 @@ const useDailyCaregivingRoundSettlementTransactionStatisticList = (
             query: searchQuery,
         }),
     ])
+
+    console.log('queryParams === ' + queryParams)
 
     const {data} = useQuery({
         keepPreviousData: true,
@@ -52,7 +54,7 @@ const useDailyCaregivingRoundSettlementTransactionStatisticList = (
         queryKey: [
             'daily-caregiving-round-settlement-transaction-statistic',
             'list',
-            {date, pageNumber, pageSize},
+            {date, pageNumber, pageSize, searchQuery},
         ],
         select: (response) => {
             return {
@@ -66,6 +68,8 @@ const useDailyCaregivingRoundSettlementTransactionStatisticList = (
             }
         },
     })
+
+    console.log('data === ', data)
 
     return data
 }

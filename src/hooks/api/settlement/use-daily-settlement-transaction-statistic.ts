@@ -35,7 +35,7 @@ const useDailySettlementTransactionStatistic = (
       fetcher<IDailyTransactionStatistic[]>(
         `/api/v1/daily-settlement-transaction-statistics?${queryParams}`,
       ),
-    queryKey: ['daily-settlement-transaction-statistic', {date},],
+    queryKey: ['daily-settlement-transaction-statistic', {date, searchQuery},],
     select: (response) =>
       response.body.length > 0
         ? new DailySettlementTransactionStatisticResource(response.body[0])
