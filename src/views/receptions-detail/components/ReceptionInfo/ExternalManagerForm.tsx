@@ -267,17 +267,17 @@ const ReceptionInfoExternalManagerForm = (props: IProps): ReactElement => {
                     <FormattingInput
                       constraints={receptionUpdateConstraints}
                       control={control}
-                      disabled
+                      //disabled
                       fieldName="patientInfo.primaryContact.phoneNumber"
                       formatter={formatPhoneNumberWithHyphen}
                       placeholder="휴대폰 번호"
-                      readonly
+                      //readonly
                     />
                   </Box>
                   <Box flex={4}>
                     <Card.Input
-                      disabled
-                      readonly
+                      //disabled
+                      //readonly
                       register={register(
                         'patientInfo.primaryContact.relationshipWithPatient',
                         receptionUpdateConstraints[
@@ -294,17 +294,17 @@ const ReceptionInfoExternalManagerForm = (props: IProps): ReactElement => {
                     <FormattingInput
                       constraints={receptionUpdateConstraints}
                       control={control}
-                      disabled
+                      //disabled
                       fieldName="patientInfo.secondaryContact.phoneNumber"
                       formatter={formatPhoneNumberWithHyphen}
                       placeholder="휴대폰 번호"
-                      readonly
+                      //readonly
                     />
                   </Box>
                   <Box flex={4}>
                     <Card.Input
-                      disabled
-                      readonly
+                      //disabled
+                      //readonly
                       register={register(
                         'patientInfo.secondaryContact.relationshipWithPatient',
                       )}
