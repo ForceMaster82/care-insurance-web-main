@@ -60,12 +60,14 @@ const CaregivingRoundModificationHistoryItem = ({
       break
     case 'CAREGIVER_BIRTH_DATE':
       previous =
-        (typeof data.previous === 'string' &&
-          formatDate(new Date(data.previous))) ||
+        // (typeof data.previous === 'string' &&
+        //   formatDate(new Date(data.previous))) ||
+        (typeof data.previous === 'string') ||
         null
       modified =
-        (typeof data.modified === 'string' &&
-          formatDate(new Date(data.modified))) ||
+        // (typeof data.modified === 'string' &&
+        //   formatDate(new Date(data.modified))) ||
+        (typeof data.modified === 'string') ||
         null
       break
     case 'CAREGIVER_PHONE_NUMBER':
