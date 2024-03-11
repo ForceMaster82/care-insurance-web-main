@@ -43,6 +43,8 @@ export const LOCAL_SERVER_ERROR_TYPES = [
   'REFERENCE_RECONCILIATION_NOT_EXISTS',
   'INVALID_RECONCILIATION_CLOSING_STATUS_TRANSITION',
   'RECEPTION_APPLICATION_NOT_FOUND',
+    'ACCIDENT_NUMBER_EXISTS',
+    'INSURANCE_NUMBER_EXISTS',
 ] as const
 
 /**
@@ -67,6 +69,8 @@ export const SERVER_ERROR_MESSAGE: Partial<
   USER_SUSPENDED: '사용할 수 없는 계정입니다.',
   WRONG_CREDENTIAL:
     '잘못된 로그인 정보입니다. 아이디(이메일) 또는 비밀번호를 확인해 주세요.',
+  ACCIDENT_NUMBER_EXISTS: '사고번호는 이미 등록되어 있습니다.',
+  INSURANCE_NUMBER_EXISTS: '증권번호는 이미 등록되어 있습니다.',
 }
 
 /**
