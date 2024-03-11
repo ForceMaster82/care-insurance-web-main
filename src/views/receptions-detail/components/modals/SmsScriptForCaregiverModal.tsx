@@ -42,7 +42,7 @@ const SmsScriptForCaregiverModal = (props: IProps): ReactElement | null => {
   )} (${primaryContact.relationshipWithPatient})\n시작희망일: ${formatDate(
     desiredCaregivingStartDate,
   )}\n예상기간: ${
-    (typeof desiredCaregivingPeriod === 'number' &&
+    (typeof desiredCaregivingPeriod === 'string' &&
       `${desiredCaregivingPeriod}일`) ||
     '미정'
   }\n요청사항: ${

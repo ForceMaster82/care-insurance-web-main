@@ -104,7 +104,7 @@ const SearchResultListItem = (props: IProps): ReactElement => {
       >
         <Box>
           <EllipsisText>
-            {(typeof data.desiredCaregivingPeriod === 'number' &&
+            {(typeof data.desiredCaregivingPeriod === 'string' &&
               `${data.desiredCaregivingPeriod}일`) ||
               '미정'}
           </EllipsisText>

@@ -248,7 +248,7 @@ export interface IReceptionListData {
   progressingStatus: ReceptionProgressingStatus
   desiredCaregivingStartDate: string
   urgency: Urgency
-  desiredCaregivingPeriod: number | null
+  desiredCaregivingPeriod: string | null
   additionalRequests: string
   periodType: PeriodType
   receivedDateTime: string
@@ -412,7 +412,7 @@ export interface IReception {
   registerManagerInfo: IReceptionRegisterManagerInfo
   desiredCaregivingStartDate: string
   urgency: Urgency
-  desiredCaregivingPeriod: number | null
+  desiredCaregivingPeriod: string | null
   additionalRequests: string
   expectedCaregivingStartDate: string | null
   expectedCaregivingLimitDate: string
@@ -431,7 +431,7 @@ export interface IReceptionCreate {
   insuranceManagerInfo: IReceptionInsuranceManagerInfo
   desiredCaregivingStartDate: string
   urgency: Urgency
-  desiredCaregivingPeriod: number | null
+  desiredCaregivingPeriod: string | null
   additionalRequests: string
   notifyCaregivingProgress: boolean
   registerManagerInfo: IReceptionRegisterManagerInfo
@@ -444,7 +444,7 @@ export interface IReceptionUpdate {
   accidentInfo: IReceptionAccidentInfo
   caregivingManagerInfo: IReceptionCaregivingManagerInfo | null
   desiredCaregivingStartDate: string
-  desiredCaregivingPeriod: number
+  desiredCaregivingPeriod: string
   additionalRequests: string
   expectedCaregivingStartDate: string | null
   expectedCaregivingLimitDate: string

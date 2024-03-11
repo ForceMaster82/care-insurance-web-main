@@ -121,7 +121,7 @@ class ReceptionUpdateInput {
           this.caregivingManagerInfo.managingUserId &&
           this.caregivingManagerInfo.input) ||
         null,
-      desiredCaregivingPeriod: Number(this.desiredCaregivingPeriod),
+      desiredCaregivingPeriod: (this.desiredCaregivingPeriod),
       desiredCaregivingStartDate: this.desiredCaregivingStartDate,
       expectedCaregivingLimitDate: this.expectedCaregivingLimitDate,
       expectedCaregivingStartDate:

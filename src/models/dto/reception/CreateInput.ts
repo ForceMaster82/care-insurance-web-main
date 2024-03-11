@@ -101,7 +101,7 @@ class ReceptionCreateInput {
       additionalRequests: this.additionalRequests,
       desiredCaregivingPeriod: this.fixedDesiredCaregivingPeriod
         ? null
-        : Number(this.desiredCaregivingPeriod),
+        : this.desiredCaregivingPeriod,
       desiredCaregivingStartDate: getIsoString(this.desiredCaregivingStartDate),
       insuranceInfo: this.insuranceInfo.input,
       insuranceManagerInfo: this.insuranceManagerInfo.input,

@@ -26,7 +26,7 @@ class ReceptionResource {
 
   #urgency: Urgency
 
-  #desiredCaregivingPeriod: number | null
+  #desiredCaregivingPeriod: string | null
 
   #additionalRequests: string
 
@@ -133,7 +133,7 @@ class ReceptionResource {
     return this.#urgency
   }
 
-  get desiredCaregivingPeriod(): number | null {
+  get desiredCaregivingPeriod(): string | null {
     return this.#desiredCaregivingPeriod
   }
 

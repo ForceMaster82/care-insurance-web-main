@@ -306,7 +306,7 @@ const ReceptionInfoContent = (props: IProps): ReactElement => {
               {formatDate(data.desiredCaregivingStartDate)}
             </Card.Item>
             <Card.Item title="희망기간 (일)">
-              {(typeof data.desiredCaregivingPeriod === 'number' &&
+              {(typeof data.desiredCaregivingPeriod === 'string' &&
                 data.desiredCaregivingPeriod) ||
                 '미정'}
             </Card.Item>
