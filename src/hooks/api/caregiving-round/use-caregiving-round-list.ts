@@ -31,7 +31,7 @@ const useCaregivingRoundList = (
     expectedCaregivingStartDate,
     searchFilter,
     pageNumber,
-    pageSize,
+    pageSize = 50,
     from,
     until,
     searchCategory,
@@ -47,17 +47,19 @@ const useCaregivingRoundList = (
     transformProgressingStatusFilterToQueryData(searchFilter)
   const searchQuery = formatSearchQuery(searchCategory, searchKeyword)
 
+
   const queryParams = getURLSearchParams([
     ...Object.entries({
       expectedCaregivingStartDate,
       from,
       pageNumber,
-      pageSize,
+      pageSize: 50,
       query: searchQuery,
       until,
     }),
     ...searchFilterQueryData,
   ])
+
   const queryKeys = {
     expectedCaregivingStartDate,
     from,
