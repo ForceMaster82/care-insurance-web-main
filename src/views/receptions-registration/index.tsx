@@ -340,7 +340,7 @@ const ReceptionsRegistrationView = (props: IProps): ReactElement => {
                 {/* 1st */}
                 <Card.Item fixedHeight={false} isOptional title="환자상태">
                   <Textarea
-                    maxLength={100}
+                    maxLength={4000}
                     register={register('accidentInfo.patientDescription')}
                     value={watch('accidentInfo.patientDescription')}
                   />
@@ -496,7 +496,7 @@ const ReceptionsRegistrationView = (props: IProps): ReactElement => {
                 {/* 5th */}
                 <Card.Item fixedHeight={false} isOptional title="요청사항">
                   <Textarea
-                    maxLength={100}
+                    maxLength={4000}
                     register={register('additionalRequests')}
                     value={watch('additionalRequests')}
                   />
