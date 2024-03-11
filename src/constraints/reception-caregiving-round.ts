@@ -6,31 +6,35 @@ import {removeNotNumber} from '../utils/formatter'
 export const receptionCaregivingRoundConstraints: Constraints<ReceptionCaregivingRoundData> =
   {
     'caregiverInfo.birthDate': {
-      validate: (value) => {
-        const message = '생년월일 입력이 잘못 되었습니다. 다시 입력해 주세요.'
-        const matchResult = value.match(/(\d{4})-(\d{2})-(\d{2})/)
-
-        if (!matchResult) {
-          return message
-        }
-
-        const [, year, month, day] = matchResult
-
-        const YEAR_MIN_VALUE = 1900
-        const YEAR_MAX_VALUE = 2099
-        const MONTH_MIN_VALUE = 1
-        const MONTH_MAX_VALUE = 12
-        const DAY_MIN_VALUE = 1
-        const DAY_MAX_VALUE = 31
-
-        const isYearValid =
-          YEAR_MIN_VALUE <= Number(year) && Number(year) <= YEAR_MAX_VALUE
-        const isMonthValid =
-          MONTH_MIN_VALUE <= Number(month) && Number(month) <= MONTH_MAX_VALUE
-        const isDayValid =
-          DAY_MIN_VALUE <= Number(day) && Number(day) <= DAY_MAX_VALUE
-
-        return (isYearValid && isMonthValid && isDayValid) || message
+      // validate: (value) => {
+      //   const message = '생년월일 입력이 잘못 되었습니다. 다시 입력해 주세요.'
+      //   const matchResult = value.match(/(\d{4})-(\d{2})-(\d{2})/)
+      //
+      //   if (!matchResult) {
+      //     return message
+      //   }
+      //
+      //   const [, year, month, day] = matchResult
+      //
+      //   const YEAR_MIN_VALUE = 1900
+      //   const YEAR_MAX_VALUE = 2099
+      //   const MONTH_MIN_VALUE = 1
+      //   const MONTH_MAX_VALUE = 12
+      //   const DAY_MIN_VALUE = 1
+      //   const DAY_MAX_VALUE = 31
+      //
+      //   const isYearValid =
+      //     YEAR_MIN_VALUE <= Number(year) && Number(year) <= YEAR_MAX_VALUE
+      //   const isMonthValid =
+      //     MONTH_MIN_VALUE <= Number(month) && Number(month) <= MONTH_MAX_VALUE
+      //   const isDayValid =
+      //     DAY_MIN_VALUE <= Number(day) && Number(day) <= DAY_MAX_VALUE
+      //
+      //   return (isYearValid && isMonthValid && isDayValid) || message
+      // },
+      required: {
+          message: '간병인 생년월일을 입력 해주세요.',
+          value: true,
       },
     },
     'caregiverInfo.caregiverOrganizationId': {

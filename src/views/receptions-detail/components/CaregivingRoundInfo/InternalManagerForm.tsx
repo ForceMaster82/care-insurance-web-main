@@ -292,12 +292,18 @@ const CaregivingRoundInfoInternalManagerForm = (
                   </Box>
                 </Card.Item>
                 <Card.Item fixedHeight={false} title="생년월일">
-                  <FormattingInput
-                    constraints={receptionCaregivingRoundConstraints}
-                    control={control}
-                    fieldName="caregiverInfo.birthDate"
-                    formatter={formatDateText}
-                    hint="'-' 없이 생년월일 8자리 입력"
+                  {/*<FormattingInput*/}
+                  {/*  constraints={receptionCaregivingRoundConstraints}*/}
+                  {/*  control={control}*/}
+                  {/*  fieldName="caregiverInfo.birthDate"*/}
+                  {/*  formatter={formatDateText}*/}
+                  {/*  hint="'-' 없이 생년월일 8자리 입력"*/}
+                  {/*/>*/}
+                  <Card.Input
+                      register={register(
+                          'caregiverInfo.birthDate',
+                          receptionCaregivingRoundConstraints['caregiverInfo.birthDate'],
+                      )}
                   />
                 </Card.Item>
               </Card.Row>

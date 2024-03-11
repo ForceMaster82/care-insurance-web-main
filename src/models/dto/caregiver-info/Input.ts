@@ -88,7 +88,7 @@ class CaregiverInfoInput {
   get input(): ICaregiverInfo {
     return {
       accountInfo: this.accountInfo.data,
-      birthDate: getIsoString(this.birthDate),
+      birthDate: this.birthDate, //getIsoString(this.birthDate),
       caregiverOrganizationId:
         (this.caregiverOrganizationId !== 'CAREDOC' &&
           this.caregiverOrganizationId) ||

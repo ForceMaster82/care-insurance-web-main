@@ -162,7 +162,8 @@ const CaregivingRoundInfoContent = (props: IProps): ReactElement => {
                   {data.caregiverInfo && SEX[data.caregiverInfo.sex]}
                 </Card.Item>
                 <Card.Item title="생년월일">
-                  {`${data.caregiverInfo?.birthDate} (만 ${data.caregiverInfo?.age}세)`}
+                  {/*{`${data.caregiverInfo?.birthDate} (만 ${data.caregiverInfo?.age}세)`}*/}
+                  {`${data.caregiverInfo?.birthDate}`}
                 </Card.Item>
               </Card.Row>
               <Card.Row>
