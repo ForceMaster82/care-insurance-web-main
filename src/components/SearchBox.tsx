@@ -51,7 +51,7 @@ const SearchBox = (props: ISearchBoxProps): ReactElement => {
           value={category}
         />
       </Box>
-      <Box width={INPUT_WIDTH}>
+      <Box width={INPUT_WIDTH} id="searchBoxBoxId">
         <Input
           affix={keyword ? 'close-circle' : undefined}
           onClickAffixIcon={handleOnClickClearKeyword}

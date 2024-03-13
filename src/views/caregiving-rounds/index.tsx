@@ -52,6 +52,9 @@ const CaregivingRoundsView = (props: IProps): ReactElement => {
   const handleOnClickResetFromUntil = (): void => {
     onChangeSearchFilter('FROM')('')
     onChangeSearchFilter('UNTIL')('')
+    onChangeSearchFilter('SEARCH_KEYWORD')('')
+    // @ts-ignore
+    document.getElementById("searchBoxBoxId").getElementsByTagName("div")[4].click();
   }
 
   const handleOnClickSearch = (

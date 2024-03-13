@@ -262,6 +262,7 @@ export const SEARCH_CATEGORY: Record<SearchCategory, string> = {
   patientName: '고객명',
   patientPhoneNumber: '연락처',
   caregiverName: '간병인명',
+  hospitalAndRoom: '병원명',
 } as const
 
 /** 간병 회차 종료 사유 */

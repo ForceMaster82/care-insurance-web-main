@@ -411,6 +411,7 @@ export type SearchCategory =
   | 'patientPhoneNumber'
   | 'organizationName'
   | 'caregiverName'
+  | 'hospitalAndRoom'
 
 /** 입출금 구분 */
 export type TransactionType = 'DEPOSIT' | 'WITHDRAWAL'

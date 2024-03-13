@@ -161,6 +161,8 @@ export const caregivingSearchCategories: IComboBoxItemData<SearchCategory>[] = [
   {data: 'insuranceNumber', label: SEARCH_CATEGORY['insuranceNumber']},
   {data: 'patientName', label: SEARCH_CATEGORY['patientName']},
   {data: 'caregiverName', label: SEARCH_CATEGORY['caregiverName']},
+  {data: 'hospitalAndRoom', label: SEARCH_CATEGORY['hospitalAndRoom']},
+  {data: 'patientPhoneNumber', label: SEARCH_CATEGORY['patientPhoneNumber']},
 ]
 
 /** 간병 현황 > 정산 입출금 현황 > 검색 카테고리 dailySettleTranSearchCategories */
