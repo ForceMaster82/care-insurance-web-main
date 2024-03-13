@@ -60,6 +60,13 @@ const CaregivingRoundsView = (props: IProps): ReactElement => {
   ): void => {
     onChangeSearchFilter('SEARCH_CATEGORY')(category)
     onChangeSearchFilter('SEARCH_KEYWORD')(keyword)
+    onChangeSearchFilter('FROM')('')
+    onChangeSearchFilter('UNTIL')('')
+    onChangeSearchFilter('EXPECTED_CAREGIVING_START_DATE')('')
+    onChangeSearchFilter('RECEPTION_PROGRESSING_STATUS')(searchFilter.RECEPTION_PROGRESSING_STATUS)
+    onChangeSearchFilter('CAREGIVING_PROGRESSING_STATUS')(searchFilter.CAREGIVING_PROGRESSING_STATUS)
+    onChangeSearchFilter('SETTLEMENT_PROGRESSING_STATUS')(searchFilter.SETTLEMENT_PROGRESSING_STATUS)
+    onChangeSearchFilter('BILLING_PROGRESSING_STATUS')(searchFilter.BILLING_PROGRESSING_STATUS)
   }
 
   return (
@@ -131,7 +138,7 @@ const CaregivingRoundsView = (props: IProps): ReactElement => {
         >
           <SearchFilter
             maxCount={3}
-            minCount={1}
+            minCount={0}
             onChange={onChangeSearchFilter('RECEPTION_PROGRESSING_STATUS')}
             options={receptionProgressingStatusFilters}
             title="진행 상태"
@@ -139,7 +146,7 @@ const CaregivingRoundsView = (props: IProps): ReactElement => {
           />
           <SearchFilter
             maxCount={3}
-            minCount={1}
+            minCount={0}
             onChange={onChangeSearchFilter('CAREGIVING_PROGRESSING_STATUS')}
             options={caregivingProgressingStatusFilters}
             title="간병 상태"
@@ -147,7 +154,7 @@ const CaregivingRoundsView = (props: IProps): ReactElement => {
           />
           <SearchFilter
             maxCount={3}
-            minCount={1}
+            minCount={0}
             onChange={onChangeSearchFilter('SETTLEMENT_PROGRESSING_STATUS')}
             options={settlementProgressingStatusFilters}
             title="정산 상태"
@@ -155,7 +162,7 @@ const CaregivingRoundsView = (props: IProps): ReactElement => {
           />
           <SearchFilter
             maxCount={3}
-            minCount={1}
+            minCount={0}
             onChange={onChangeSearchFilter('BILLING_PROGRESSING_STATUS')}
             options={billingProgressingStatusFilters}
             title="청구 상태"

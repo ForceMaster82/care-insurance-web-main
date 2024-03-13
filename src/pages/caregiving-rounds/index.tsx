@@ -57,25 +57,23 @@ const CaregivingRoundsPage: NextPage = observer(() => {
       new SearchFilterStore<CaregivingRoundsPageSearchFilterKey>({
         BILLING_PROGRESSING_STATUS:
           (billingProgressingStatusQueryValue?.length &&
-            billingProgressingStatusQueryValue) || ['NOT_STARTED'],
+            billingProgressingStatusQueryValue) || [null], //['NOT_STARTED'],
         CAREGIVING_PROGRESSING_STATUS:
           (caregivingProgressingStatusQueryValue?.length &&
-            caregivingProgressingStatusQueryValue) || [
-            'CAREGIVING_IN_PROGRESS',
-          ],
+            caregivingProgressingStatusQueryValue) || [null], //['CAREGIVING_IN_PROGRESS',],
         EXPECTED_CAREGIVING_START_DATE:
           pageQuery?.get('expected-caregiving-start-date') || '',
         FROM: pageQuery?.get('from') || '',
         RECEPTION_PROGRESSING_STATUS:
           (receptionProgressingStatusQueryValue?.length &&
-            receptionProgressingStatusQueryValue) || ['CAREGIVING_IN_PROGRESS'],
+            receptionProgressingStatusQueryValue) || [null], //['CAREGIVING_IN_PROGRESS'],
         SEARCH_CATEGORY:
           (pageQuery?.get('search-category') as SearchCategory | undefined) ||
           'patientName',
         SEARCH_KEYWORD: pageQuery?.get('search-keyword') || '',
         SETTLEMENT_PROGRESSING_STATUS:
           (settlementProgressingStatusQueryValue?.length &&
-            settlementProgressingStatusQueryValue) || ['NOT_STARTED'],
+            settlementProgressingStatusQueryValue) || [null], //['NOT_STARTED'],
         UNTIL: pageQuery?.get('until') || '',
       }),
   )
