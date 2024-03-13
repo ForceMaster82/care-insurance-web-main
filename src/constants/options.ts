@@ -147,6 +147,7 @@ export const receptionSearchCategories: IComboBoxItemData<SearchCategory>[] = [
   {data: 'accidentNumber', label: SEARCH_CATEGORY['accidentNumber']},
   {data: 'insuranceNumber', label: SEARCH_CATEGORY['insuranceNumber']},
   {data: 'patientName', label: SEARCH_CATEGORY['patientName']},
+  {data: 'caregiverName', label: SEARCH_CATEGORY['caregiverName']},
   {
     data: 'caregivingManagerName',
     label: SEARCH_CATEGORY['caregivingManagerName'],
@@ -173,6 +174,7 @@ export const settlementWaitingSearchCategories: IComboBoxItemData<SearchCategory
   [
     {data: 'accidentNumber', label: SEARCH_CATEGORY['accidentNumber']},
     {data: 'patientName', label: SEARCH_CATEGORY['patientName']},
+    {data: 'caregiverName', label: SEARCH_CATEGORY['caregiverName']},
     {data: 'organizationName', label: SEARCH_CATEGORY['organizationName']},
   ]
 
@@ -181,6 +183,7 @@ export const settlementTransactionSearchCategories: IComboBoxItemData<SearchCate
   [
     {data: 'accidentNumber', label: SEARCH_CATEGORY['accidentNumber']},
     {data: 'patientName', label: SEARCH_CATEGORY['patientName']},
+    {data: 'caregiverName', label: SEARCH_CATEGORY['caregiverName']},
   ]
 
 /** 청구 관리 - 청구 페이지 검색 카테고리 */
@@ -188,12 +191,14 @@ export const billingWaitingSearchCategories: IComboBoxItemData<SearchCategory>[]
   [
     {data: 'accidentNumber', label: SEARCH_CATEGORY['accidentNumber']},
     {data: 'patientName', label: SEARCH_CATEGORY['patientName']},
+    {data: 'caregiverName', label: SEARCH_CATEGORY['caregiverName']},
   ]
 
 /** 청구 관리 - 미수 페이지 검색 카테고리 */
 export const billingWaitingDepositSearchCategories: IComboBoxItemData<SearchCategory>[] =
   [
     {data: 'patientName', label: SEARCH_CATEGORY['patientName']},
+    {data: 'caregiverName', label: SEARCH_CATEGORY['caregiverName']},
     {data: 'accidentNumber', label: SEARCH_CATEGORY['accidentNumber']},
   ]
 
@@ -201,6 +206,7 @@ export const billingWaitingDepositSearchCategories: IComboBoxItemData<SearchCate
 export const billingTransactionSearchCategories: IComboBoxItemData<SearchCategory>[] =
   [
     {data: 'patientName', label: SEARCH_CATEGORY['patientName']},
+    {data: 'caregiverName', label: SEARCH_CATEGORY['caregiverName']},
     {data: 'accidentNumber', label: SEARCH_CATEGORY['accidentNumber']},
   ]
 
@@ -209,6 +215,7 @@ export const reconciliationSearchCategories: IComboBoxItemData<SearchCategory>[]
   [
     {data: 'accidentNumber', label: SEARCH_CATEGORY['accidentNumber']},
     {data: 'patientName', label: SEARCH_CATEGORY['patientName']},
+    {data: 'caregiverName', label: SEARCH_CATEGORY['caregiverName']},
   ]
 
 /** 알림톡/비즈콜 검색 카테고리 */
@@ -216,6 +223,7 @@ export const notificationSearchCategories: IComboBoxItemData<SearchCategory>[] =
   [
     {data: 'accidentNumber', label: SEARCH_CATEGORY['accidentNumber']},
     {data: 'patientName', label: SEARCH_CATEGORY['patientName']},
+    {data: 'caregiverName', label: SEARCH_CATEGORY['caregiverName']},
   ]
 
 /** 알림톡 전송 상태 필터 */
