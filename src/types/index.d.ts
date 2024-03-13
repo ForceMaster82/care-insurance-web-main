@@ -334,7 +334,6 @@ export type ReceptionProgressingStatus =
   | 'CANCELED_WHILE_MATCHING'
   | 'CAREGIVING_IN_PROGRESS'
   | 'COMPLETED'
-  | null
 
 /** 간병 회차 진행 상태 */
 export type CaregivingProgressingStatus =
@@ -347,7 +346,6 @@ export type CaregivingProgressingStatus =
   | 'COMPLETED' // 간병 종료
   | 'COMPLETED_USING_PERSONAL_CAREGIVER' // 개인구인 종료
   | 'RECONCILIATION_COMPLETED' // 정산대사 완료
-  | null
 
 /** 간병 회차 종료 사유 */
 export type CaregivingRoundClosingReasonType =
@@ -360,7 +358,6 @@ export type CaregivingRoundClosingReasonType =
   | 'FINISHED_CHANGING_CAREGIVER_AND_HOSPITAL' // 간병인 & 병원 교체
   | 'CANCELED_WHILE_REMATCHING' // 리매칭 중 취소
   | 'CANCELED_USING_PERSONAL_CAREGIVER' // 개인구인으로 취소
-  | null
 
 /** 간병 회차 정산 상태 */
 export type SettlementProgressingStatus =
@@ -368,7 +365,6 @@ export type SettlementProgressingStatus =
   | 'CONFIRMED'
   | 'WAITING'
   | 'COMPLETED'
-  | null
 
 /** 간병 회차 청구 상태 */
 export type BillingProgressingStatus =
@@ -378,7 +374,6 @@ export type BillingProgressingStatus =
   | 'OVER_DEPOSIT'
   | 'UNDER_DEPOSIT'
   | 'COMPLETED_DEPOSIT'
-  | null
 
 /** 외부 간병 협회 구분 */
 export type ExternalCaregivingOrganizationType = 'ORGANIZATION' | 'AFFILIATED'
@@ -416,7 +411,6 @@ export type SearchCategory =
   | 'patientPhoneNumber'
   | 'organizationName'
   | 'caregiverName'
-  | null
 
 /** 입출금 구분 */
 export type TransactionType = 'DEPOSIT' | 'WITHDRAWAL'

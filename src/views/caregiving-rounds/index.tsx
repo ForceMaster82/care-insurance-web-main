@@ -60,13 +60,6 @@ const CaregivingRoundsView = (props: IProps): ReactElement => {
   ): void => {
     onChangeSearchFilter('SEARCH_CATEGORY')(category)
     onChangeSearchFilter('SEARCH_KEYWORD')(keyword)
-    onChangeSearchFilter('FROM')('')
-    onChangeSearchFilter('UNTIL')('')
-    onChangeSearchFilter('EXPECTED_CAREGIVING_START_DATE')('')
-    onChangeSearchFilter('RECEPTION_PROGRESSING_STATUS')(searchFilter.RECEPTION_PROGRESSING_STATUS)
-    onChangeSearchFilter('CAREGIVING_PROGRESSING_STATUS')(searchFilter.CAREGIVING_PROGRESSING_STATUS)
-    onChangeSearchFilter('SETTLEMENT_PROGRESSING_STATUS')(searchFilter.SETTLEMENT_PROGRESSING_STATUS)
-    onChangeSearchFilter('BILLING_PROGRESSING_STATUS')(searchFilter.BILLING_PROGRESSING_STATUS)
   }
 
   return (
