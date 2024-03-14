@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react'
+import React, {ReactElement, useState} from 'react'
 import {Box, Button, Checkbox, ComboBox, Typography} from '@caredoc/ui-web'
 import {ReceptionsPageSearchFilterKey, SearchCategory} from '../../types'
 import {IPaginationResponse} from '../../types/dto'
@@ -45,18 +45,34 @@ const ReceptionsView = (props: IProps): ReactElement => {
     onChangeSearchFilter('PERIOD_TYPE')(
       searchFilter.PERIOD_TYPE ? null : 'SHORT',
     )
+    onChangeSearchFilter('SEARCH_KEYWORD')('')
+    // @ts-ignore
+    let closeBox = document.getElementById("searchBoxBoxId").getElementsByTagName("div")[4];
+    if (closeBox) closeBox.click();
   }
 
   const handleOnToggleUrgencyFilter = (): void => {
     onChangeSearchFilter('URGENCY')(searchFilter.URGENCY ? null : 'URGENT')
+    onChangeSearchFilter('SEARCH_KEYWORD')('')
+    // @ts-ignore
+    let closeBox = document.getElementById("searchBoxBoxId").getElementsByTagName("div")[4];
+    if (closeBox) closeBox.click();
   }
 
   const handleOnToggleExclueCompleted = (): void => {
     onChangeSearchFilter('EXCLUDE_COMPLETED')(searchFilter.EXCLUDE_COMPLETED ? null : 'COMPLETED')
+    onChangeSearchFilter('SEARCH_KEYWORD')('')
+    // @ts-ignore
+    let closeBox = document.getElementById("searchBoxBoxId").getElementsByTagName("div")[4];
+    if (closeBox) closeBox.click();
   }
 
   const handleOnToggleCanceledReception = (): void => {
     onChangeSearchFilter('CANCELED_RECEPTION')(searchFilter.CANCELED_RECEPTION ? null : 'CANCEL')
+    onChangeSearchFilter('SEARCH_KEYWORD')('')
+    // @ts-ignore
+    let closeBox = document.getElementById("searchBoxBoxId").getElementsByTagName("div")[4];
+    if (closeBox) closeBox.click();
   }
 
   const handleOnClickSearch = (
@@ -65,6 +81,14 @@ const ReceptionsView = (props: IProps): ReactElement => {
   ): void => {
     onChangeSearchFilter('SEARCH_CATEGORY')(category)
     onChangeSearchFilter('SEARCH_KEYWORD')(keyword)
+    onChangeSearchFilter('RECEIVED_PERIOD')(null)
+    //onChangeSearchFilter('FROM')('')
+    //onChangeSearchFilter('UNTIL')('')
+    onChangeSearchFilter('ORGANIZATION_TYPE')(null)
+    onChangeSearchFilter('PERIOD_TYPE')(null)
+    onChangeSearchFilter('URGENCY')(null)
+    onChangeSearchFilter('EXCLUDE_COMPLETED')(null)
+    onChangeSearchFilter('CANCELED_RECEPTION')(null)
   }
 
   const handleOnChangeReceivedPeriod = (
@@ -74,6 +98,10 @@ const ReceptionsView = (props: IProps): ReactElement => {
     onChangeSearchFilter('RECEIVED_PERIOD')(option)
     onChangeSearchFilter('FROM')(period.startDate)
     onChangeSearchFilter('UNTIL')(period.endDate)
+    onChangeSearchFilter('SEARCH_KEYWORD')('')
+    // @ts-ignore
+    let closeBox = document.getElementById("searchBoxBoxId").getElementsByTagName("div")[4];
+    if (closeBox) closeBox.click();
   }
 
   const handleOnChangeFromUntil =
@@ -81,6 +109,10 @@ const ReceptionsView = (props: IProps): ReactElement => {
     (value: string): void => {
       onChangeSearchFilter(key)(value)
       onChangeSearchFilter('RECEIVED_PERIOD')(null)
+      onChangeSearchFilter('SEARCH_KEYWORD')('')
+      // @ts-ignore
+      let closeBox = document.getElementById("searchBoxBoxId").getElementsByTagName("div")[4];
+      if (closeBox) closeBox.click();
     }
 
   return (
