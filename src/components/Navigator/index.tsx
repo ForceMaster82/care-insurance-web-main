@@ -58,7 +58,7 @@ const NAVIGATION_DATA: NavigationData[] = [
     id: 'CARE_STATUS',
     organizationCapability: ['INTERNAL'],
     path: STATISTIC_PATH.MONTHLY_RECEPTION(),
-    title: '간병 현황',
+    title: '보고(통계) 지표',
   },
   {
     id: 'NOTIFICATION',

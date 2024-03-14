@@ -1,4 +1,4 @@
-import {Box, ComboBox, IComboBoxItemData} from '@caredoc/ui-web'
+import {Box, ComboBox, IComboBoxItemData, Typography} from '@caredoc/ui-web'
 import React, {ReactElement} from 'react'
 import {SEARCH_COMBOBOX_WIDTH} from '../constants'
 import {getThisYear} from '../utils/date'
@@ -40,6 +40,11 @@ const YearMonthPicker = (props: IYearMonthPickerProps): ReactElement => {
         <Box width={SEARCH_COMBOBOX_WIDTH}>
           <ComboBox items={monthList} onSelect={onSelectMonth} value={month} />
         </Box>
+      </Box>
+      <Box>
+          <Typography textColor="fontSecondary">
+              {year}년 {month} 월 현황입니다.
+          </Typography>
       </Box>
     </SearchFilterTitleWrapper>
   )
