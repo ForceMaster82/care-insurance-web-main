@@ -148,10 +148,8 @@ export const receptionSearchCategories: IComboBoxItemData<SearchCategory>[] = [
   {data: 'insuranceNumber', label: SEARCH_CATEGORY['insuranceNumber']},
   {data: 'patientName', label: SEARCH_CATEGORY['patientName']},
   {data: 'caregiverName', label: SEARCH_CATEGORY['caregiverName']},
-  {
-    data: 'caregivingManagerName',
-    label: SEARCH_CATEGORY['caregivingManagerName'],
-  },
+  {data: 'caregivingManagerName', label: SEARCH_CATEGORY['caregivingManagerName']},
+  {data: 'hospitalAndRoom', label: SEARCH_CATEGORY['hospitalAndRoom']},
   {data: 'patientPhoneNumber', label: SEARCH_CATEGORY['patientPhoneNumber']},
 ]
 
