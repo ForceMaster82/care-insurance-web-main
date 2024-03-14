@@ -57,23 +57,23 @@ const CaregivingRoundsPage: NextPage = observer(() => {
       new SearchFilterStore<CaregivingRoundsPageSearchFilterKey>({
         BILLING_PROGRESSING_STATUS:
           (billingProgressingStatusQueryValue?.length &&
-            billingProgressingStatusQueryValue) || [null], //['NOT_STARTED'],
+            billingProgressingStatusQueryValue) || ['NOT_STARTED'],
         CAREGIVING_PROGRESSING_STATUS:
           (caregivingProgressingStatusQueryValue?.length &&
-            caregivingProgressingStatusQueryValue) || [null], //['CAREGIVING_IN_PROGRESS',],
+            caregivingProgressingStatusQueryValue) || ['CAREGIVING_IN_PROGRESS',],
         EXPECTED_CAREGIVING_START_DATE:
           pageQuery?.get('expected-caregiving-start-date') || '',
         FROM: pageQuery?.get('from') || '',
         RECEPTION_PROGRESSING_STATUS:
           (receptionProgressingStatusQueryValue?.length &&
-            receptionProgressingStatusQueryValue) || [null], //['CAREGIVING_IN_PROGRESS'],
+            receptionProgressingStatusQueryValue) || ['CAREGIVING_IN_PROGRESS'],
         SEARCH_CATEGORY:
           (pageQuery?.get('search-category') as SearchCategory | undefined) ||
           'patientName',
         SEARCH_KEYWORD: pageQuery?.get('search-keyword') || '',
         SETTLEMENT_PROGRESSING_STATUS:
           (settlementProgressingStatusQueryValue?.length &&
-            settlementProgressingStatusQueryValue) || [null], //['NOT_STARTED'],
+            settlementProgressingStatusQueryValue) || ['NOT_STARTED'],
         UNTIL: pageQuery?.get('until') || '',
       }),
   )
@@ -117,10 +117,21 @@ const CaregivingRoundsPage: NextPage = observer(() => {
     router.push(RECEPTIONS_PATH.DETAIL(receptionId))
   }
 
+  const inArray = (arr:string[], val:string) => {
+      for (let i=0; i<arr.length; i++) {
+          if (arr[i] == val) return i;
+      }
+      return -1;
+  }
+
   const handleOnChangeSearchFilters =
     <K extends CaregivingRoundsPageSearchFilterKey>(key: K) =>
     (value: SearchFilter[K]) => {
-      searchFilterStore.set(key, value)
+        searchFilterStore.set(key, value)
+        if (inArray(['SEARCH_CATEGORY','SEARCH_KEYWORD'], key) == -1) {
+            searchFilterStore.set('SEARCH_CATEGORY', '')
+            searchFilterStore.set('SEARCH_KEYWORD', '')
+        }
     }
 
   const handleOnClickCsvDownload =
