@@ -5,7 +5,7 @@ import {
   BillingProgressingStatus, Cancel,
   CaregivingManagerOrganizationTypeFilterType,
   CaregivingMessageSendingStatus,
-  CaregivingProgressingStatus, Completed,
+  CaregivingProgressingStatus, Completed, Notify,
   PeriodType,
   ReceptionProgressingStatus,
   SearchCategory,
@@ -47,6 +47,7 @@ export interface SearchFilter {
   STATE: State | null
   CITY: string | null
   RECEIVED_PERIOD: ReceivedPeriodOptionValue | null
+  NOTIFY_CAREGIVING_PROGRESS: Notify | true
 }
 
 class SearchFilterStore<K extends keyof SearchFilter> {

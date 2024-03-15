@@ -87,6 +87,7 @@ export type CaregivingRoundsPageSearchFilterKey =
   | 'CAREGIVING_PROGRESSING_STATUS'
   | 'SETTLEMENT_PROGRESSING_STATUS'
   | 'BILLING_PROGRESSING_STATUS'
+  | 'NOTIFY_CAREGIVING_PROGRESS'
 
 export type ReceptionsPageSearchFilterKey =
   | 'FROM'
@@ -402,6 +403,9 @@ export type Completed = 'NORMAL' | 'COMPLETED'
 /** 기간 구분 */
 export type PeriodType = 'NORMAL' | 'SHORT'
 
+/** 알림 미수신여부 */
+export type Notify = true | false
+
 /** 검색 카테고리 */
 export type SearchCategory =
   | 'accidentNumber'
@@ -440,3 +444,5 @@ export type SearchQueryParams = {
   searchCategory: SearchCategory
   searchKeyword: string
 }
+
+

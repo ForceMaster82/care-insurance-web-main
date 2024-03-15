@@ -21,12 +21,12 @@ import {BOM_UTF_8} from '../../constants'
 import {fetcher} from '../../utils/fetcher'
 import {getFilenameFromHttpHeaders} from '../../utils/get-filename-from-http-headers'
 import {
-  BillingProgressingStatus,
-  CaregivingProgressingStatus,
-  CaregivingRoundsPageSearchFilterKey,
-  ReceptionProgressingStatus,
-  SearchCategory,
-  SettlementProgressingStatus,
+    BillingProgressingStatus,
+    CaregivingProgressingStatus,
+    CaregivingRoundsPageSearchFilterKey, Notify,
+    ReceptionProgressingStatus,
+    SearchCategory,
+    SettlementProgressingStatus,
 } from '~types'
 import Layout from '~templates/layouts/Layout'
 
@@ -45,6 +45,7 @@ const CaregivingRoundsPage: NextPage = observer(() => {
     'billing-progressing-status',
   ) as BillingProgressingStatus[] | undefined
   const pageNumberQueryValue = pageQuery?.get('page-number')
+  const NotifyQueryValue = pageQuery?.get('notify') as Notify | undefined
 
   const router = useRouter()
 
@@ -75,6 +76,7 @@ const CaregivingRoundsPage: NextPage = observer(() => {
           (settlementProgressingStatusQueryValue?.length &&
             settlementProgressingStatusQueryValue) || ['NOT_STARTED'],
         UNTIL: pageQuery?.get('until') || '',
+        NOTIFY_CAREGIVING_PROGRESS: NotifyQueryValue || true,
       }),
   )
 
@@ -100,6 +102,7 @@ const CaregivingRoundsPage: NextPage = observer(() => {
     searchKeyword: searchFilterStore.searchFilter.SEARCH_KEYWORD,
     until: searchFilterStore.searchFilter.UNTIL,
     user,
+    notify: searchFilterStore.searchFilter.NOTIFY_CAREGIVING_PROGRESS,
   })
 
   const handleOnClickListItem = (receptionId: string): void => {

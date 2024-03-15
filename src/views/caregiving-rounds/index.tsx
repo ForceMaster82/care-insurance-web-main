@@ -1,5 +1,5 @@
 import React, {ReactElement, useState} from 'react'
-import {Box, Button, Chip} from '@caredoc/ui-web'
+import {Box, Button, Checkbox, Chip, Typography} from '@caredoc/ui-web'
 import CaregivingRoundResource from '../../models/dto/caregiving-round/Resource'
 import {IPaginationResponse} from '../../types/dto'
 import SearchDatePicker from '../../components/SearchDatePicker'
@@ -62,6 +62,20 @@ const CaregivingRoundsView = (props: IProps): ReactElement => {
     onChangeSearchFilter('SEARCH_KEYWORD')(keyword)
   }
 
+  const handleOnToggleNotifyFilter = (): void => {
+    // if(searchFilter.NOTIFY_CAREGIVING_PROGRESS) {
+    //   onChangeSearchFilter('NOTIFY_CAREGIVING_PROGRESS')(true)
+    // }else {
+    //   onChangeSearchFilter('NOTIFY_CAREGIVING_PROGRESS')(false)
+    // }
+    onChangeSearchFilter('NOTIFY_CAREGIVING_PROGRESS')(searchFilter.NOTIFY_CAREGIVING_PROGRESS ? true : false )
+
+    onChangeSearchFilter('SEARCH_KEYWORD')('')
+    // @ts-ignore
+    let closeBox = document.getElementById("searchBoxBoxId").getElementsByTagName("div")[4];
+    if (closeBox) closeBox.click();
+  }
+
   return (
     <Box gap="lg" px="sm" py="lg">
       <Box gap="xs">
@@ -97,6 +111,18 @@ const CaregivingRoundsView = (props: IProps): ReactElement => {
             >
               초기화
             </Chip>
+          </Box>
+          <Box alignItems="rigth" flexDirection="row" gap="sm">
+            <Checkbox
+                color="primary"
+                onClick={handleOnToggleNotifyFilter}
+                size="sm"
+                value={searchFilter.NOTIFY_CAREGIVING_PROGRESS === false}
+            >
+              <Typography textColor="fontPrimary" variant="body3">
+                미수신 대상 여부
+              </Typography>
+            </Checkbox>
           </Box>
           <SearchBox
             categoryOptions={caregivingSearchCategories}

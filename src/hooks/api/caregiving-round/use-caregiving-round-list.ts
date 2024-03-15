@@ -3,10 +3,10 @@ import UserResource from '../../../models/dto/user/Resource'
 import {fetcher} from '../../../utils/fetcher'
 import {ICaregivingRound, IPaginationResponse} from '../../../types/dto'
 import {
-  CaregivingSearchFilter,
+  CaregivingSearchFilter, Notify,
   PaginationParams,
   PeriodParams,
-  SearchQueryParams,
+  SearchQueryParams, Urgency,
 } from '../../../types'
 import {
   formatSearchQuery,
@@ -19,6 +19,7 @@ type IProps = {
   expectedCaregivingStartDate: string
   searchFilter: CaregivingSearchFilter
   user?: UserResource
+  notify: Notify
 } & PaginationParams &
   PeriodParams &
   SearchQueryParams
@@ -36,6 +37,7 @@ const useCaregivingRoundList = (
     until,
     searchCategory,
     searchKeyword,
+    notify,
   } = props
 
   const path =
@@ -56,6 +58,7 @@ const useCaregivingRoundList = (
       pageSize: 50,
       query: searchQuery,
       until,
+      notify,
     }),
     ...searchFilterQueryData,
   ])
@@ -68,6 +71,7 @@ const useCaregivingRoundList = (
     query: searchQuery,
     searchFilter,
     until,
+    notify,
   }
 
   const {data} = useQuery({
