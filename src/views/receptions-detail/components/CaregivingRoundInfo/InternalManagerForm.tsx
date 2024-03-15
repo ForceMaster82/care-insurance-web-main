@@ -169,11 +169,11 @@ const CaregivingRoundInfoInternalManagerForm = (
                 <Card.Row>
                   <Card.RowGroup flex={1}>
                     <Card.Row>
-                      <Card.Item title="시작일시">
+                      <Card.Item title="시작일시2">
                         <Card.Input
-                          disabled={!isStartDateTimeEditable}
+                          //disabled={!isStartDateTimeEditable}
                           max={MAX_DATE_TIME_VALUE}
-                          readonly={!isStartDateTimeEditable}
+                          //readonly={!isStartDateTimeEditable}
                           register={register('startDateTime', {
                             required: data.startDateTime
                               ? receptionCaregivingRoundConstraints
