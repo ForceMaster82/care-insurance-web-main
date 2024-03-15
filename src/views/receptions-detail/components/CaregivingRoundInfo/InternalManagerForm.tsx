@@ -169,7 +169,7 @@ const CaregivingRoundInfoInternalManagerForm = (
                 <Card.Row>
                   <Card.RowGroup flex={1}>
                     <Card.Row>
-                      <Card.Item title="시작일시2">
+                      <Card.Item title="시작일시">
                         <Card.Input
                           //disabled={!isStartDateTimeEditable}
                           max={MAX_DATE_TIME_VALUE}
