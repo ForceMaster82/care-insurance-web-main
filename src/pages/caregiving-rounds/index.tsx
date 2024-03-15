@@ -45,7 +45,7 @@ const CaregivingRoundsPage: NextPage = observer(() => {
     'billing-progressing-status',
   ) as BillingProgressingStatus[] | undefined
   const pageNumberQueryValue = pageQuery?.get('page-number')
-  const NotifyQueryValue = pageQuery?.get('notify') as Notify | undefined
+  const NotifyQueryValue = pageQuery?.get('notify') as Notify
 
   const router = useRouter()
 
@@ -76,7 +76,7 @@ const CaregivingRoundsPage: NextPage = observer(() => {
           (settlementProgressingStatusQueryValue?.length &&
             settlementProgressingStatusQueryValue) || ['NOT_STARTED'],
         UNTIL: pageQuery?.get('until') || '',
-        NOTIFY_CAREGIVING_PROGRESS: NotifyQueryValue || true,
+        NOTIFY_CAREGIVING_PROGRESS: NotifyQueryValue,
       }),
   )
 

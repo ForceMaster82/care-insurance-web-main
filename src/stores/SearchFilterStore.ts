@@ -47,7 +47,7 @@ export interface SearchFilter {
   STATE: State | null
   CITY: string | null
   RECEIVED_PERIOD: ReceivedPeriodOptionValue | null
-  NOTIFY_CAREGIVING_PROGRESS: Notify | true
+  NOTIFY_CAREGIVING_PROGRESS: Notify
 }
 
 class SearchFilterStore<K extends keyof SearchFilter> {

@@ -63,12 +63,7 @@ const CaregivingRoundsView = (props: IProps): ReactElement => {
   }
 
   const handleOnToggleNotifyFilter = (): void => {
-    // if(searchFilter.NOTIFY_CAREGIVING_PROGRESS) {
-    //   onChangeSearchFilter('NOTIFY_CAREGIVING_PROGRESS')(true)
-    // }else {
-    //   onChangeSearchFilter('NOTIFY_CAREGIVING_PROGRESS')(false)
-    // }
-    onChangeSearchFilter('NOTIFY_CAREGIVING_PROGRESS')(searchFilter.NOTIFY_CAREGIVING_PROGRESS ? true : false )
+    onChangeSearchFilter('NOTIFY_CAREGIVING_PROGRESS')(searchFilter.NOTIFY_CAREGIVING_PROGRESS ? null : "false" )
 
     onChangeSearchFilter('SEARCH_KEYWORD')('')
     // @ts-ignore
@@ -117,7 +112,7 @@ const CaregivingRoundsView = (props: IProps): ReactElement => {
                 color="primary"
                 onClick={handleOnToggleNotifyFilter}
                 size="sm"
-                value={searchFilter.NOTIFY_CAREGIVING_PROGRESS === false}
+                value={searchFilter.NOTIFY_CAREGIVING_PROGRESS === 'false'}
             >
               <Typography textColor="fontPrimary" variant="body3">
                 미수신 대상 여부

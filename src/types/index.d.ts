@@ -404,7 +404,7 @@ export type Completed = 'NORMAL' | 'COMPLETED'
 export type PeriodType = 'NORMAL' | 'SHORT'
 
 /** 알림 미수신여부 */
-export type Notify = true | false
+export type Notify = null | 'false'
 
 /** 검색 카테고리 */
 export type SearchCategory =
