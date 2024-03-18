@@ -49,7 +49,7 @@ export const receptionCaregivingRoundConstraints: Constraints<ReceptionCaregivin
         value: true,
       },
     },
-    'caregiverInfo.dailyCaregivingCharge': {
+    /*'caregiverInfo.dailyCaregivingCharge': {
       validate: {
         isGreaterThanZero: (value) => {
           const dailyCaregivingCharge = Number(removeNotNumber(value))
@@ -72,7 +72,7 @@ export const receptionCaregivingRoundConstraints: Constraints<ReceptionCaregivin
         message: '간병인의 휴대폰 번호를 입력해 주세요.',
         value: true,
       },
-    },
+    },*/
     endDateTime: {
       required: {
         message: '종료일시를 입력해 주세요.',
