@@ -11,6 +11,14 @@ const receptionProgressingStatusList = Object.keys(
 ) as ReceptionProgressingStatus[]
 
 const data: ICaregivingRoundReceptionInfo = {
+  hospitalAndRoom: "",
+  managingUserId: "",
+  patientAge: 0,
+  patientDescription: "",
+  patientNickName: "",
+  patientPrimaryPhoneNumber: "",
+  patientSex: "",
+  receivedDateTime: "",
   accidentNumber: faker.datatype.uuid(),
   caregivingManagerInfo: {
     managingUserId: faker.datatype.uuid(),
@@ -23,7 +31,7 @@ const data: ICaregivingRoundReceptionInfo = {
   receptionId: faker.datatype.uuid(),
   receptionProgressingStatus: faker.helpers.arrayElement(
     receptionProgressingStatusList,
-  ),
+  )
 }
 
 describe('model / Resource / CaregivingRoundReceptionInfo', () => {

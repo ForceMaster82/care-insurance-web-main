@@ -13,6 +13,15 @@ class CaregivingRoundReceptionInfoResource {
 
   #patientName: string
 
+  #patientNickName: string
+  #patientAge: number
+  #patientSex: string
+  #patientPrimaryPhoneNumber: string
+  #hospitalAndRoom: string
+  #patientDescription : string
+  #receivedDateTime: string
+  #managingUserId: string
+
   #expectedCaregivingStartDate: string | null
 
   #caregivingManagerInfo: ReceptionCaregivingManagerInfoResource | null
@@ -24,6 +33,14 @@ class CaregivingRoundReceptionInfoResource {
       accidentNumber,
       insuranceNumber,
       patientName,
+      patientNickName,
+      patientAge,
+      patientSex,
+      patientPrimaryPhoneNumber,
+      hospitalAndRoom,
+      patientDescription,
+      receivedDateTime,
+      managingUserId,
       expectedCaregivingStartDate,
       caregivingManagerInfo,
     } = data
@@ -33,6 +50,15 @@ class CaregivingRoundReceptionInfoResource {
     this.#accidentNumber = accidentNumber
     this.#insuranceNumber = insuranceNumber
     this.#patientName = patientName
+    this.#patientNickName = patientNickName
+    this.#patientAge = patientAge
+    this.#patientSex = patientSex
+    this.#patientPrimaryPhoneNumber = patientPrimaryPhoneNumber
+    this.#hospitalAndRoom = hospitalAndRoom
+    this.#patientDescription = patientDescription
+    this.#receivedDateTime = receivedDateTime
+    this.#managingUserId = managingUserId
+
     this.#expectedCaregivingStartDate = expectedCaregivingStartDate || null
     this.#caregivingManagerInfo =
       (caregivingManagerInfo &&
@@ -58,6 +84,38 @@ class CaregivingRoundReceptionInfoResource {
 
   get patientName(): string {
     return this.#patientName
+  }
+
+  get patientNickName(): string {
+    return this.#patientNickName
+  }
+
+  get patientAge(): number {
+    return this.#patientAge
+  }
+
+  get patientSex(): string {
+    return this.#patientSex
+  }
+
+  get patientPrimaryPhoneNumber(): string {
+    return this.#patientPrimaryPhoneNumber
+  }
+
+  get hospitalAndRoom(): string {
+    return this.#hospitalAndRoom
+  }
+
+  get patientDescription(): string {
+    return this.#patientDescription
+  }
+
+  get receivedDateTime(): string {
+    return this.#receivedDateTime
+  }
+
+  get managingUserId(): string {
+    return this.#managingUserId
   }
 
   get expectedCaregivingStartDate(): Date | null {

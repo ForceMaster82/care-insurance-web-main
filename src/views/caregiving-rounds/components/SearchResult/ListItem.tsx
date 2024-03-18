@@ -14,6 +14,7 @@ import useExternalCaregivingOrganization from '../../../../hooks/api/external-ca
 import {generatePeriodText} from '../../../../utils/text-transformation'
 import useInternalCaregivingManagerDetail from '../../../../hooks/api/internal-caregiving-manager/use-internal-caregiving-manager-detail'
 import useExternalCaregivingManagerDetail from '../../../../hooks/api/external-caregiving-manager/use-external-caregiving-manager-detail'
+import RTooltip from "views/caregiving-rounds/components/SearchResult/RTooltip";
 
 type IProps = {
   data: CaregivingRoundResource
@@ -59,7 +60,8 @@ const SearchResultListItem = (props: IProps): ReactElement => {
       highlightHover
       key={`caregiving-round-${data.id}`}
       onClick={(): void => onClick(data.receptionInfo.receptionId)}
-    >
+
+  >
       <EllipsisText>
         {getItemOrder(
           totalItemCount,
@@ -68,9 +70,69 @@ const SearchResultListItem = (props: IProps): ReactElement => {
           listItemIndex,
         )}
       </EllipsisText>
+      <RTooltip
+          className={'tooltip-listItem'}
+          message={'환자명 = '+data.receptionInfo.patientName+
+              '  |  닉네임 = '+data.receptionInfo.patientNickName+
+              '  |  나이 = '+data.receptionInfo.patientAge+
+              '  |  성별 = '+data.receptionInfo.patientSex+
+              '  |  연락처 = '+data.receptionInfo.patientPrimaryPhoneNumber+
+              '  |  병원 = '+data.receptionInfo.hospitalAndRoom+
+              '  |  환자상태 = '+data.receptionInfo.patientDescription+
+              '  |  접수일 = '+data.receptionInfo.receivedDateTime+
+              '  |  담당자정보 = '+(caregivingManager?.name || EMPTY_VALUE_TEXT)+
+              '  |  협회명 = '+((caregivingManagerInfo?.organizationType === 'INTERNAL' && ORGANIZATION_TYPE['INTERNAL']) ||
+                  caregivingManagerOrganization?.name || EMPTY_VALUE_TEXT)+
+              '  |  간병인명 = '+data.caregiverName+
+              '  |  간병인연락처 = '+data.caregiverPhoneNumber+
+              '  |  간병인성별 = '+data.caregiverSex+
+              '  |  간병인나이 = '+data.caregiverBirthDate
+          }
+      >
       <EllipsisText>{data.receptionInfo.insuranceNumber}</EllipsisText>
+      </RTooltip>
+      <RTooltip
+          className={'tooltip-listItem'}
+          message={'환자명='+data.receptionInfo.patientName+
+              '  |  닉네임='+data.receptionInfo.patientNickName+
+              '  |  나이='+data.receptionInfo.patientAge+
+              '  |  성별='+data.receptionInfo.patientSex+
+              '  |  연락처='+data.receptionInfo.patientPrimaryPhoneNumber+
+              '  |  병원='+data.receptionInfo.hospitalAndRoom+
+              '  |  환자상태='+data.receptionInfo.patientDescription+
+              '  |  접수일='+data.receptionInfo.receivedDateTime+
+              '  |  담당자정보 = '+(caregivingManager?.name || EMPTY_VALUE_TEXT)+
+              '  |  협회명 = '+((caregivingManagerInfo?.organizationType === 'INTERNAL' && ORGANIZATION_TYPE['INTERNAL']) ||
+              caregivingManagerOrganization?.name || EMPTY_VALUE_TEXT)+
+              '  |  간병인명 = '+data.caregiverName+
+              '  |  간병인연락처 = '+data.caregiverPhoneNumber+
+              '  |  간병인성별 = '+data.caregiverSex+
+              '  |  간병인나이 = '+data.caregiverBirthDate
+          }
+      >
       <EllipsisText>{data.receptionInfo.accidentNumber}</EllipsisText>
+      </RTooltip>
+      <RTooltip
+          className={'tooltip-listItem'}
+          message={'환자명='+data.receptionInfo.patientName+
+              '  |  닉네임='+data.receptionInfo.patientNickName+
+              '  |  나이='+data.receptionInfo.patientAge+
+              '  |  성별='+data.receptionInfo.patientSex+
+              '  |  연락처='+data.receptionInfo.patientPrimaryPhoneNumber+
+              '  |  병원='+data.receptionInfo.hospitalAndRoom+
+              '  |  환자상태='+data.receptionInfo.patientDescription+
+              '  |  접수일='+data.receptionInfo.receivedDateTime+
+              '  |  담당자정보 = '+(caregivingManager?.name || EMPTY_VALUE_TEXT)+
+              '  |  협회명 = '+((caregivingManagerInfo?.organizationType === 'INTERNAL' && ORGANIZATION_TYPE['INTERNAL']) ||
+                  caregivingManagerOrganization?.name || EMPTY_VALUE_TEXT)+
+              '  |  간병인명 = '+data.caregiverName+
+              '  |  간병인연락처 = '+data.caregiverPhoneNumber+
+              '  |  간병인성별 = '+data.caregiverSex+
+              '  |  간병인나이 = '+data.caregiverBirthDate
+          }
+      >
       <EllipsisText>{data.receptionInfo.patientName}</EllipsisText>
+      </RTooltip>
       <ReceptionStatusChip
         status={data.receptionInfo.receptionProgressingStatus}
       />

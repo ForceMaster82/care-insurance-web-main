@@ -464,6 +464,14 @@ export interface ICaregivingRoundReceptionInfo {
   accidentNumber: string
   insuranceNumber: string
   patientName: string
+  patientNickName: string
+  patientAge: number
+  patientSex: string
+  patientPrimaryPhoneNumber: string
+  hospitalAndRoom: string
+  patientDescription : string
+  receivedDateTime: string
+  managingUserId: string
   expectedCaregivingStartDate?: string | null
   caregivingManagerInfo: IReceptionCaregivingManagerInfo | null
 }
@@ -521,6 +529,9 @@ export interface ICaregivingRound {
   receptionInfo: ICaregivingRoundReceptionInfo
   caregivingRoundNumber: number
   caregiverName: string
+  caregiverPhoneNumber: string
+  caregiverSex: string
+  caregiverBirthDate: string
   caregivingProgressingStatus: CaregivingProgressingStatus
   settlementProgressingStatus: SettlementProgressingStatus
   billingProgressingStatus: BillingProgressingStatus

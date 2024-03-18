@@ -18,6 +18,12 @@ class CaregivingRoundResource {
 
   #caregiverName: string | null
 
+  #caregiverPhoneNumber: string | null
+
+  #caregiverSex: string | null
+
+  #caregiverBirthDate: string | null
+
   #caregivingProgressingStatus: CaregivingProgressingStatus
 
   #settlementProgressingStatus: SettlementProgressingStatus
@@ -28,12 +34,39 @@ class CaregivingRoundResource {
 
   #endDateTime: string | null
 
-  constructor(data: ICaregivingRound) {
+  constructor(data: {
+    startDateTime: string;
+    receptionInfo: {
+      patientName: string;
+      patientNickName: string;
+      patientSex: string;
+      receptionProgressingStatus: string;
+      patientDescription: string;
+      expectedCaregivingStartDate: string;
+      managingUserId: string;
+      caregivingManagerInfo: { organizationId: null; organizationType: string; managingUserId: string };
+      receptionId: string;
+      hospitalAndRoom: string;
+      accidentNumber: string;
+      insuranceNumber: string;
+      receivedDateTime: string;
+      patientAge: number;
+      patientPrimaryPhoneNumber: string
+    };
+    billingProgressingStatus: string;
+    caregivingRoundNumber: number;
+    caregivingProgressingStatus: string;
+    id: string;
+    settlementProgressingStatus: string
+  }) {
     const {
       id,
       receptionInfo,
       caregivingRoundNumber,
       caregiverName,
+      caregiverPhoneNumber,
+      caregiverSex,
+      caregiverBirthDate,
       caregivingProgressingStatus,
       settlementProgressingStatus,
       billingProgressingStatus,
@@ -47,6 +80,9 @@ class CaregivingRoundResource {
     )
     this.#caregivingRoundNumber = caregivingRoundNumber
     this.#caregiverName = caregiverName
+    this.#caregiverPhoneNumber = caregiverPhoneNumber
+    this.#caregiverSex = caregiverSex
+    this.#caregiverBirthDate = caregiverBirthDate
     this.#caregivingProgressingStatus = caregivingProgressingStatus
     this.#settlementProgressingStatus = settlementProgressingStatus
     this.#billingProgressingStatus = billingProgressingStatus
@@ -68,6 +104,18 @@ class CaregivingRoundResource {
 
   get caregiverName(): string | null {
     return this.#caregiverName
+  }
+
+  get caregiverPhoneNumber(): string | null {
+    return this.#caregiverPhoneNumber
+  }
+
+  get caregiverSex(): string | null {
+    return this.#caregiverSex
+  }
+
+  get caregiverBirthDate(): string | null {
+    return this.#caregiverBirthDate
   }
 
   get caregivingProgressingStatus(): CaregivingProgressingStatus {
