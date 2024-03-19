@@ -113,17 +113,17 @@ const CaregivingRoundInfoInternalManagerForm = (
     return getDateDistance(endDateTime, startDateTime)
   }, [endDateTimeInput, startDateTimeInput])
 
-  const setCaregiverAccountInfoByOrganizationAccountInfo = useCallback(() => {
-    if (selectedExternalOrganization) {
-      const {bank, accountNumber, accountHolder} =
-        selectedExternalOrganization.accountInfo
-      bank && setValue('caregiverInfo.accountInfo.bank', bank)
-      accountHolder &&
-        setValue('caregiverInfo.accountInfo.accountHolder', accountHolder)
-      accountNumber &&
-        setValue('caregiverInfo.accountInfo.accountNumber', accountNumber)
-    }
-  }, [selectedExternalOrganization, setValue])
+  // const setCaregiverAccountInfoByOrganizationAccountInfo = useCallback(() => {
+  //   if (selectedExternalOrganization) {
+  //     const {bank, accountNumber, accountHolder} =
+  //       selectedExternalOrganization.accountInfo
+  //     bank && setValue('caregiverInfo.accountInfo.bank', bank)
+  //     accountHolder &&
+  //       setValue('caregiverInfo.accountInfo.accountHolder', accountHolder)
+  //     accountNumber &&
+  //       setValue('caregiverInfo.accountInfo.accountNumber', accountNumber)
+  //   }
+  // }, [selectedExternalOrganization, setValue])
 
   useEffect(() => {
     register('caregiverInfo.caregiverOrganizationId')
@@ -132,9 +132,9 @@ const CaregivingRoundInfoInternalManagerForm = (
     register('caregiverInfo.accountInfo.bank')
   }, [register])
 
-  useEffect(() => {
-    setCaregiverAccountInfoByOrganizationAccountInfo()
-  }, [setCaregiverAccountInfoByOrganizationAccountInfo])
+  // useEffect(() => {
+  //   setCaregiverAccountInfoByOrganizationAccountInfo()
+  // }, [setCaregiverAccountInfoByOrganizationAccountInfo])
 
   return (
     <form onSubmit={handleSubmit(onValid, onInvalid)}>
@@ -363,6 +363,7 @@ const CaregivingRoundInfoInternalManagerForm = (
                     items={bankList}
                     onSelect={(value): void =>
                       setValue('caregiverInfo.accountInfo.bank', value)
+                        //setValue('data.caregiverInfo.accountInfo.bank', value)
                     }
                     value={watch('caregiverInfo.accountInfo.bank')}
                   />
