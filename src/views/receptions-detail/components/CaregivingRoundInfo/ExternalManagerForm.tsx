@@ -134,17 +134,17 @@ const CaregivingRoundInfoExternalManagerForm = (
       setValue,
     ])
 
-  const setCaregiverAccountInfoByOrganizationAccountInfo = useCallback(() => {
-    if (selectedExternalOrganization) {
-      const {bank, accountNumber, accountHolder} =
-        selectedExternalOrganization.accountInfo
-      bank && setValue('caregiverInfo.accountInfo.bank', bank)
-      accountHolder &&
-        setValue('caregiverInfo.accountInfo.accountHolder', accountHolder)
-      accountNumber &&
-        setValue('caregiverInfo.accountInfo.accountNumber', accountNumber)
-    }
-  }, [selectedExternalOrganization, setValue])
+  // const setCaregiverAccountInfoByOrganizationAccountInfo = useCallback(() => {
+  //   if (selectedExternalOrganization) {
+  //     const {bank, accountNumber, accountHolder} =
+  //       selectedExternalOrganization.accountInfo
+  //     bank && setValue('caregiverInfo.accountInfo.bank', bank)
+  //     accountHolder &&
+  //       setValue('caregiverInfo.accountInfo.accountHolder', accountHolder)
+  //     accountNumber &&
+  //       setValue('caregiverInfo.accountInfo.accountNumber', accountNumber)
+  //   }
+  // }, [selectedExternalOrganization, setValue])
 
   useEffect(() => {
     register('caregiverInfo.caregiverOrganizationId')
@@ -157,9 +157,9 @@ const CaregivingRoundInfoExternalManagerForm = (
     setCaregiverOrganizationByCaregivingManagerOrganization()
   }, [setCaregiverOrganizationByCaregivingManagerOrganization])
 
-  useEffect(() => {
-    setCaregiverAccountInfoByOrganizationAccountInfo()
-  }, [setCaregiverAccountInfoByOrganizationAccountInfo])
+  // useEffect(() => {
+  //   setCaregiverAccountInfoByOrganizationAccountInfo()
+  // }, [setCaregiverAccountInfoByOrganizationAccountInfo])
 
   return (
     <form onSubmit={handleSubmit(onValid, onInvalid)}>
