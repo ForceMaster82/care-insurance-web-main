@@ -93,7 +93,7 @@ const SettlementsWaitingView = (props: IProps): ReactElement => {
               </Button>
               <Button
                 color="primary"
-                disabled={selectedListItemIds.length === 0}
+                //disabled={selectedListItemIds.length === 0}
                 onClick={onClickSettlementComplete}
               >
                 정산 처리

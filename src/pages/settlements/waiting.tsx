@@ -105,6 +105,28 @@ const SettlementsWaitingPage: NextPage = observer(() => {
     )
   }, [queryClient, selectedItems, setSelectedItems, updateSettlements])
 
+  const handleOnClickSettlementCompleteNew = async (): Promise<void> => {
+    const updateRequested = confirm('정산 처리하시겠습니까?')
+    const internalCaregivingManagerId = getInternalCaregivingManagerIdFromToken()
+
+    if (!updateRequested || !internalCaregivingManagerId) {
+      return
+    }
+
+    try {
+      const params = `progressing-status=WAITING&from=${searchFilterStore.searchFilter.FROM}&until=${searchFilterStore.searchFilter.UNTIL}&settlementManagerId=${internalCaregivingManagerId}`;
+      const res = await fetcher(`/api/v1/settlements/sendCalculate?${params}`)
+      console.log(res);
+      alert('정상처리 되었습니다.');
+      window.location.reload();
+    } catch (error) {
+      if (error instanceof Error) {
+        const errorType = isLocalServerErrorType(error)
+        errorType && alert(SERVER_ERROR_MESSAGE[errorType] || error.message)
+      }
+    }
+  }
+
   const handleOnClickCsvDownload = async (): Promise<void> => {
     try {
       const data = await fetcher<string>(
@@ -160,7 +182,7 @@ const SettlementsWaitingPage: NextPage = observer(() => {
           onChangeSearchFilter={handleOnChangeSearchFilter}
           onClickCsvDownload={handleOnClickCsvDownload}
           onClickListItemAccidentNumber={handleOnClickListItemAccidentNumber}
-          onClickSettlementComplete={handleOnClickSettlementComplete}
+          onClickSettlementComplete={handleOnClickSettlementCompleteNew}
           onSelectAllListItem={setSelectedItems}
           onSelectListItem={selectItem}
           searchFilter={toJS(searchFilterStore.searchFilter)}
