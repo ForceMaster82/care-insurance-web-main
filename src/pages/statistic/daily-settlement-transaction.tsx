@@ -17,6 +17,10 @@ import useDailySettlementTransactionStatistic from '~hooks/api/settlement/use-da
 import useDailyCaregivingRoundSettlementTransactionStatisticList from '~hooks/api/settlement/use-daily-caregiving-round-settlement-transaction-statistic-list'
 import {DEFAULT_PAGE_SIZE} from '~constants/data'
 import {SearchCategory} from '~types'
+import {fetcher} from "utils/fetcher";
+import {getFilenameFromHttpHeaders} from "utils/get-filename-from-http-headers";
+import {format} from "date-fns";
+import {downloadFile} from "utils/download-file";
 
 const StatisticDailySettlementTransactionPage: NextPage = observer(() => {
   const pageQuery = isServer() ? null : new URL(document.URL).searchParams
@@ -38,6 +42,8 @@ const StatisticDailySettlementTransactionPage: NextPage = observer(() => {
                 (pageQuery?.get('search-category') as SearchCategory | undefined) ||
                 'patientName',
             SEARCH_KEYWORD: pageQuery?.get('search-keyword') || '',
+            UNTIL: '',
+            FROM: '',
         },
       ),
   )
@@ -62,6 +68,18 @@ const StatisticDailySettlementTransactionPage: NextPage = observer(() => {
       searchCategory: searchFilterStore.searchFilter.SEARCH_CATEGORY,
       searchKeyword: searchFilterStore.searchFilter.SEARCH_KEYWORD,
   })
+
+  const handleOnClickExcelDownload = (
+    expectedCaregivingStartDate: string,
+    expectedCaregivingEndDate: string,
+  ) => async () => {
+      if (!expectedCaregivingStartDate || !expectedCaregivingEndDate) {
+          return
+      }
+
+      const path = `${process.env.NEXT_PUBLIC_API_URL}/api/v2/statistic/settlementExcelDown?from=${expectedCaregivingStartDate}&until=${expectedCaregivingStartDate}`
+      document.location.href = path
+  }
 
   const settlementTransactionList =
     useDailyCaregivingRoundSettlementTransactionStatisticList({
@@ -97,6 +115,7 @@ const StatisticDailySettlementTransactionPage: NextPage = observer(() => {
     <Layout currentPage="CARE_STATUS">
       {settlementTransactionList ? (
         <StatisticDailySettlementTransactionView
+          onClickExcelDownload={handleOnClickExcelDownload}
           onChangeSearchFilter={handleOnChangeSearchFilter}
           onClickListItemAccidentNumber={handleOnClickListItemAccidentNumber}
           searchFilter={toJS(searchFilterStore.searchFilter)}

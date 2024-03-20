@@ -39,6 +39,8 @@ export type StatisticDailySettlementTransactionPageSearchFilterKey =
   | 'DATE'
   | 'SEARCH_CATEGORY'
   | 'SEARCH_KEYWORD'
+  | 'UNTIL'
+  | 'FROM'
 
 export type ReconciliationPageSearchFilterKey =
   | 'ISSUED_AT_FROM'

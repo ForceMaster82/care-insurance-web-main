@@ -32,6 +32,7 @@ const ScRTooltip = styled.span`
     border-radius: 10px;
     z-index: 10;
     display: none;
+    white-space:pre-line;
   }
 
   &:hover {

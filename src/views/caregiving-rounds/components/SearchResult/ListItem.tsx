@@ -73,20 +73,20 @@ const SearchResultListItem = (props: IProps): ReactElement => {
       <RTooltip
           className={'tooltip-listItem'}
           message={'환자명 = '+data.receptionInfo.patientName+
-              '  |  닉네임 = '+data.receptionInfo.patientNickName+
-              '  |  나이 = '+data.receptionInfo.patientAge+
-              '  |  성별 = '+data.receptionInfo.patientSex+
-              '  |  연락처 = '+data.receptionInfo.patientPrimaryPhoneNumber+
-              '  |  병원 = '+data.receptionInfo.hospitalAndRoom+
-              '  |  환자상태 = '+data.receptionInfo.patientDescription+
-              '  |  접수일 = '+data.receptionInfo.receivedDateTime+
-              '  |  담당자정보 = '+(caregivingManager?.name || EMPTY_VALUE_TEXT)+
-              '  |  협회명 = '+((caregivingManagerInfo?.organizationType === 'INTERNAL' && ORGANIZATION_TYPE['INTERNAL']) ||
+              '\n닉네임 = '+data.receptionInfo.patientNickName+
+              '\n나이 = '+data.receptionInfo.patientAge+
+              '\n성별 = '+data.receptionInfo.patientSex+
+              '\n연락처 = '+data.receptionInfo.patientPrimaryPhoneNumber+
+              '\n병원 = '+data.receptionInfo.hospitalAndRoom+
+              '\n환자상태 = '+data.receptionInfo.patientDescription+
+              '\n접수일 = '+data.receptionInfo.receivedDateTime+
+              '\n담당자정보 = '+(caregivingManager?.name || EMPTY_VALUE_TEXT)+
+              '\n협회명 = '+((caregivingManagerInfo?.organizationType === 'INTERNAL' && ORGANIZATION_TYPE['INTERNAL']) ||
                   caregivingManagerOrganization?.name || EMPTY_VALUE_TEXT)+
-              '  |  간병인명 = '+data.caregiverName+
-              '  |  간병인연락처 = '+data.caregiverPhoneNumber+
-              '  |  간병인성별 = '+data.caregiverSex+
-              '  |  간병인나이 = '+data.caregiverBirthDate
+              '\n간병인명 = '+data.caregiverName+
+              '\n간병인연락처 = '+data.caregiverPhoneNumber+
+              '\n간병인성별 = '+data.caregiverSex+
+              '\n간병인나이 = '+data.caregiverBirthDate
           }
       >
       <EllipsisText>{data.receptionInfo.insuranceNumber}</EllipsisText>
@@ -94,20 +94,20 @@ const SearchResultListItem = (props: IProps): ReactElement => {
       <RTooltip
           className={'tooltip-listItem'}
           message={'환자명='+data.receptionInfo.patientName+
-              '  |  닉네임='+data.receptionInfo.patientNickName+
-              '  |  나이='+data.receptionInfo.patientAge+
-              '  |  성별='+data.receptionInfo.patientSex+
-              '  |  연락처='+data.receptionInfo.patientPrimaryPhoneNumber+
-              '  |  병원='+data.receptionInfo.hospitalAndRoom+
-              '  |  환자상태='+data.receptionInfo.patientDescription+
-              '  |  접수일='+data.receptionInfo.receivedDateTime+
-              '  |  담당자정보 = '+(caregivingManager?.name || EMPTY_VALUE_TEXT)+
-              '  |  협회명 = '+((caregivingManagerInfo?.organizationType === 'INTERNAL' && ORGANIZATION_TYPE['INTERNAL']) ||
+              '\n닉네임='+data.receptionInfo.patientNickName+
+              '\n나이='+data.receptionInfo.patientAge+
+              '\n성별='+data.receptionInfo.patientSex+
+              '\n연락처='+data.receptionInfo.patientPrimaryPhoneNumber+
+              '\n병원='+data.receptionInfo.hospitalAndRoom+
+              '\n환자상태='+data.receptionInfo.patientDescription+
+              '\n접수일='+data.receptionInfo.receivedDateTime+
+              '\n담당자정보 = '+(caregivingManager?.name || EMPTY_VALUE_TEXT)+
+              '\n협회명 = '+((caregivingManagerInfo?.organizationType === 'INTERNAL' && ORGANIZATION_TYPE['INTERNAL']) ||
               caregivingManagerOrganization?.name || EMPTY_VALUE_TEXT)+
-              '  |  간병인명 = '+data.caregiverName+
-              '  |  간병인연락처 = '+data.caregiverPhoneNumber+
-              '  |  간병인성별 = '+data.caregiverSex+
-              '  |  간병인나이 = '+data.caregiverBirthDate
+              '\n간병인명 = '+data.caregiverName+
+              '\n간병인연락처 = '+data.caregiverPhoneNumber+
+              '\n간병인성별 = '+data.caregiverSex+
+              '\n간병인나이 = '+data.caregiverBirthDate
           }
       >
       <EllipsisText>{data.receptionInfo.accidentNumber}</EllipsisText>
@@ -115,20 +115,20 @@ const SearchResultListItem = (props: IProps): ReactElement => {
       <RTooltip
           className={'tooltip-listItem'}
           message={'환자명='+data.receptionInfo.patientName+
-              '  |  닉네임='+data.receptionInfo.patientNickName+
-              '  |  나이='+data.receptionInfo.patientAge+
-              '  |  성별='+data.receptionInfo.patientSex+
-              '  |  연락처='+data.receptionInfo.patientPrimaryPhoneNumber+
-              '  |  병원='+data.receptionInfo.hospitalAndRoom+
-              '  |  환자상태='+data.receptionInfo.patientDescription+
-              '  |  접수일='+data.receptionInfo.receivedDateTime+
-              '  |  담당자정보 = '+(caregivingManager?.name || EMPTY_VALUE_TEXT)+
-              '  |  협회명 = '+((caregivingManagerInfo?.organizationType === 'INTERNAL' && ORGANIZATION_TYPE['INTERNAL']) ||
+              '\n닉네임='+data.receptionInfo.patientNickName+
+              '\n나이='+data.receptionInfo.patientAge+
+              '\n성별='+data.receptionInfo.patientSex+
+              '\n연락처='+data.receptionInfo.patientPrimaryPhoneNumber+
+              '\n병원='+data.receptionInfo.hospitalAndRoom+
+              '\n환자상태='+data.receptionInfo.patientDescription+
+              '\n접수일='+data.receptionInfo.receivedDateTime+
+              '\n담당자정보 = '+(caregivingManager?.name || EMPTY_VALUE_TEXT)+
+              '\n협회명 = '+((caregivingManagerInfo?.organizationType === 'INTERNAL' && ORGANIZATION_TYPE['INTERNAL']) ||
                   caregivingManagerOrganization?.name || EMPTY_VALUE_TEXT)+
-              '  |  간병인명 = '+data.caregiverName+
-              '  |  간병인연락처 = '+data.caregiverPhoneNumber+
-              '  |  간병인성별 = '+data.caregiverSex+
-              '  |  간병인나이 = '+data.caregiverBirthDate
+              '\n간병인명 = '+data.caregiverName+
+              '\n간병인연락처 = '+data.caregiverPhoneNumber+
+              '\n간병인성별 = '+data.caregiverSex+
+              '\n간병인나이 = '+data.caregiverBirthDate
           }
       >
       <EllipsisText>{data.receptionInfo.patientName}</EllipsisText>

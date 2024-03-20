@@ -1,4 +1,4 @@
-import {Box} from '@caredoc/ui-web'
+import {Box, Button} from '@caredoc/ui-web'
 import React, {ReactElement} from 'react'
 import SearchDatePicker from '../../components/SearchDatePicker'
 import SubPageTabBar from '../../components/SubPageTabBar'
@@ -15,11 +15,16 @@ import DailySettlementTransactionStatisticResource from '~models/dto/daily-settl
 import {dailySettleTranSearchCategories} from '../../constants'
 import SearchBox from '../../components/SearchBox'
 import {SearchCategory} from '~types'
+import SearchPeriodPicker from "components/SearchPeriodPicker";
 
 interface IProps {
   onChangeSearchFilter: <K extends StatisticDailySettlementTransactionPageSearchFilterKey>(
     key: K,
   ) => (value: SearchFilter[K]) => void
+  onClickExcelDownload: (
+    expectedCaregivingStartDate: string,
+    expectedCaregivingEndDate: string,
+  ) => () => Promise<void>
   onClickListItemAccidentNumber: (receptionId: string) => void
   setPageNumber: (page: number) => void
   settlementTransactionList?: IPaginationResponse<DailyCaregivingRoundSettlementTransaction>
@@ -33,6 +38,7 @@ const StatisticDailySettlementTransactionView = (
   const {
     searchFilter,
     onChangeSearchFilter,
+    onClickExcelDownload,
     onClickListItemAccidentNumber,
     totalTransactionAmount,
     settlementTransactionList,
@@ -60,14 +66,33 @@ const StatisticDailySettlementTransactionView = (
         required
         title="조회일자"
       />
-      <Box flexDirection="row" justifyContent="space-between">
-          <SearchBox
-              categoryOptions={dailySettleTranSearchCategories}
-              defaultCategory={searchFilter.SEARCH_CATEGORY}
-              defaultKeyword={searchFilter.SEARCH_KEYWORD}
-              onClickSearch={handleOnClickSearch}
-          />
-      </Box>
+
+      <SearchBox
+          categoryOptions={dailySettleTranSearchCategories}
+          defaultCategory={searchFilter.SEARCH_CATEGORY}
+          defaultKeyword={searchFilter.SEARCH_KEYWORD}
+          onClickSearch={handleOnClickSearch}
+      />
+
+        <SearchPeriodPicker
+            endDateString={searchFilter.UNTIL}
+            onChangeEndDate={onChangeSearchFilter('UNTIL')}
+            onChangeStartDate={onChangeSearchFilter('FROM')}
+            startDateString={searchFilter.FROM}
+            title="정산 예정일자"
+        />
+
+        <Button
+            color="primary"
+            disabled={!searchFilter.FROM}
+            onClick={onClickExcelDownload(
+                searchFilter.FROM, searchFilter.UNTIL
+            )}
+            size="sm"
+            variant="primary"
+        >
+            엑셀 다운로드
+        </Button>
 
       {totalTransactionAmount && (
         <TransactionDashboard
