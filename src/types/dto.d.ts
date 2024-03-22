@@ -512,6 +512,7 @@ export interface IReceptionCaregivingRound {
   billingProgressingStatus: BillingProgressingStatus
   caregiverInfo: ICaregiverInfo | null
   remarks: string
+  expectedSettlementDate: string | null
 }
 
 export interface IReceptionCaregivingRoundUpdate {
@@ -522,6 +523,7 @@ export interface IReceptionCaregivingRoundUpdate {
   caregivingRoundClosingReasonDetail: string | null
   caregiverInfo: ICaregiverInfo | null
   remarks: string
+  expectedSettlementDate: string | null
 }
 
 export interface ICaregivingRound {
@@ -537,6 +539,7 @@ export interface ICaregivingRound {
   billingProgressingStatus: BillingProgressingStatus
   startDateTime: string | null
   endDateTime: string | null
+  expectedSettlementDate: string | null
 }
 
 export interface ISettlement {
@@ -728,4 +731,5 @@ export interface ICaregivingRoundInfo {
   billingProgressingStatus: BillingProgressingStatus
   caregiverInfo: ICaregiverInfo
   remarks: string
+  expectedSettlementDate: string | null
 }

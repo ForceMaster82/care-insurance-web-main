@@ -49,6 +49,10 @@ const CaregivingRoundsView = (props: IProps): ReactElement => {
     onChangeSearchFilter('EXPECTED_CAREGIVING_START_DATE')('')
   }
 
+  const handleOnClickResetExpectedSettlementDate = (): void => {
+    onChangeSearchFilter('EXPECTED_SETTLEMENT_DATE')('')
+  }
+
   const handleOnClickResetFromUntil = (): void => {
     onChangeSearchFilter('FROM')('')
     onChangeSearchFilter('UNTIL')('')
@@ -74,21 +78,36 @@ const CaregivingRoundsView = (props: IProps): ReactElement => {
   return (
     <Box gap="lg" px="sm" py="lg">
       <Box gap="xs">
-        <Box alignItems="center" flexDirection="row" gap="xs">
-          <SearchDatePicker
-            dateString={searchFilter.EXPECTED_CAREGIVING_START_DATE}
-            onChange={onChangeSearchFilter('EXPECTED_CAREGIVING_START_DATE')}
-            title="간병 예상일자"
-          />
-          <Chip
-            color="fontPrimary"
-            onClick={handleOnClickResetExpectedCaregivingStartDate}
-            size="sm"
-            variant="tertiary"
-          >
-            초기화
-          </Chip>
-        </Box>
+          <Box alignItems="center" flexDirection="row" gap="xs">
+            <SearchDatePicker
+              dateString={searchFilter.EXPECTED_CAREGIVING_START_DATE}
+              onChange={onChangeSearchFilter('EXPECTED_CAREGIVING_START_DATE')}
+              title="간병 예상일자"
+            />
+            <Chip
+              color="fontPrimary"
+              onClick={handleOnClickResetExpectedCaregivingStartDate}
+              size="sm"
+              variant="tertiary"
+            >
+              초기화
+            </Chip>
+          </Box>
+          <Box alignItems="center" flexDirection="row" gap="xs">
+            <SearchDatePicker
+                dateString={searchFilter.EXPECTED_SETTLEMENT_DATE}
+                onChange={onChangeSearchFilter('EXPECTED_SETTLEMENT_DATE')}
+                title="정산 예정일자"
+            />
+            <Chip
+                color="fontPrimary"
+                onClick={handleOnClickResetExpectedSettlementDate}
+                size="sm"
+                variant="tertiary"
+            >
+              초기화
+            </Chip>
+          </Box>
         <Box flexDirection="row" justifyContent="space-between">
           <Box alignItems="center" flexDirection="row" gap="xs">
             <SearchPeriodPicker

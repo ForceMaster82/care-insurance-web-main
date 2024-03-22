@@ -15,7 +15,7 @@ import ReceptionCaregivingRoundResource from '../../../../models/dto/reception-c
 import {bankList, ORGANIZATION_TYPE} from '../../../../constants'
 import ReceptionCaregivingRoundInput from '../../../../models/dto/reception-caregiving-round/Input'
 import {receptionCaregivingRoundConstraints} from '../../../../constraints/reception-caregiving-round'
-import {formatDateTimeText, getDateDistance} from '../../../../utils/date'
+import {formatDate, formatDateTime, formatDateTimeText, getDateDistance} from '../../../../utils/date'
 import {MAX_DATE_TIME_VALUE, MAX_LENGTH} from '../../../../constraints/input'
 import {getExternalCaregivingOrganizationOptions} from '../../../../utils/option'
 import useExternalCaregivingOrganizationList from '../../../../hooks/api/external-caregiving-organization/use-external-caregiving-organization-list'
@@ -208,6 +208,13 @@ const CaregivingRoundInfoInternalManagerForm = (
                           </InfoBox>
                         )}
                       </Card.Item>
+                      <Card.Item fixedHeight={false} isOptional title="메모">
+                        <Card.Input
+                            maxLength={MAX_LENGTH.TEXTAREA}
+                            register={register('remarks')}
+                            value={watch('remarks')}
+                        />
+                      </Card.Item>
                     </Card.Row>
                     <Card.Row>
                       <Card.Item title="간병기간">
@@ -235,15 +242,17 @@ const CaregivingRoundInfoInternalManagerForm = (
                           }
                         />
                       </Card.Item>
+                      <Card.Item title="정산예정일자">
+                        <Card.Input
+                            //disabled
+                            max={MAX_DATE_TIME_VALUE}
+                            //readonly
+                            register={register('expectedSettlementDate')}
+                            type="date"
+                        />
+                      </Card.Item>
                     </Card.Row>
                   </Card.RowGroup>
-                  <Card.Item fixedHeight={false} isOptional title="메모">
-                    <Card.Input
-                      maxLength={MAX_LENGTH.TEXTAREA}
-                      register={register('remarks')}
-                      value={watch('remarks')}
-                    />
-                  </Card.Item>
                 </Card.Row>
               </Card.RowGroup>
             </Box>

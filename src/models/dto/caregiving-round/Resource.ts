@@ -36,28 +36,17 @@ class CaregivingRoundResource {
 
   constructor(data: {
     startDateTime: string;
-    receptionInfo: {
-      patientName: string;
-      patientNickName: string;
-      patientSex: string;
-      receptionProgressingStatus: string;
-      patientDescription: string;
-      expectedCaregivingStartDate: string;
-      managingUserId: string;
-      caregivingManagerInfo: { organizationId: null; organizationType: string; managingUserId: string };
-      receptionId: string;
-      hospitalAndRoom: string;
-      accidentNumber: string;
-      insuranceNumber: string;
-      receivedDateTime: string;
-      patientAge: number;
-      patientPrimaryPhoneNumber: string
-    };
-    billingProgressingStatus: string;
+    receptionInfo: CaregivingRoundReceptionInfoResource
+    billingProgressingStatus: BillingProgressingStatus;
     caregivingRoundNumber: number;
-    caregivingProgressingStatus: string;
+    caregivingProgressingStatus: CaregivingProgressingStatus;
     id: string;
-    settlementProgressingStatus: string
+    settlementProgressingStatus: SettlementProgressingStatus;
+    caregiverName: string
+    caregiverPhoneNumber: string
+    caregiverSex: string
+    caregiverBirthDate: string
+    endDateTime: string
   }) {
     const {
       id,
@@ -75,9 +64,7 @@ class CaregivingRoundResource {
     } = data
 
     this.#id = id
-    this.#receptionInfo = new CaregivingRoundReceptionInfoResource(
-      receptionInfo,
-    )
+    this.#receptionInfo = receptionInfo
     this.#caregivingRoundNumber = caregivingRoundNumber
     this.#caregiverName = caregiverName
     this.#caregiverPhoneNumber = caregiverPhoneNumber

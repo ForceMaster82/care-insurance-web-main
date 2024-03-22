@@ -4,7 +4,7 @@ import {
 } from '../../../types'
 import {IReceptionCaregivingRoundUpdate} from '../../../types/dto'
 import {ReceptionCaregivingRoundData} from '../../../types/form'
-import {formatDateTimeText, getIsoString} from '../../../utils/date'
+import {formatDate, formatDateTimeText, getIsoString} from '../../../utils/date'
 import CaregiverInfoInput from '../caregiver-info/Input'
 import ReceptionCaregivingRoundResource from './Resource'
 
@@ -23,6 +23,8 @@ class ReceptionCaregivingRoundInput {
 
   remarks: string
 
+  expectedSettlementDate: string
+
   constructor(resource?: ReceptionCaregivingRoundResource) {
     this.caregivingProgressingStatus =
       resource?.caregivingProgressingStatus || null
@@ -40,6 +42,8 @@ class ReceptionCaregivingRoundInput {
         new CaregiverInfoInput(resource.caregiverInfo)) ||
       new CaregiverInfoInput()
     this.remarks = resource?.remarks || ''
+    this.expectedSettlementDate = (resource?.expectedSettlementDate && formatDate(resource.expectedSettlementDate)) ||
+        ''
   }
 
   get data(): ReceptionCaregivingRoundData {
@@ -52,6 +56,7 @@ class ReceptionCaregivingRoundInput {
       endDateTime: this.endDateTime,
       remarks: this.remarks,
       startDateTime: this.startDateTime,
+      expectedSettlementDate : this.expectedSettlementDate,
     }
   }
 
@@ -64,6 +69,7 @@ class ReceptionCaregivingRoundInput {
       caregivingRoundClosingReasonDetail,
       caregiverInfo,
       remarks,
+      expectedSettlementDate,
     } = data
 
     this.caregivingProgressingStatus = caregivingProgressingStatus
@@ -73,6 +79,7 @@ class ReceptionCaregivingRoundInput {
     this.caregivingRoundClosingReasonDetail = caregivingRoundClosingReasonDetail
     this.caregiverInfo.data = caregiverInfo
     this.remarks = remarks
+    this.expectedSettlementDate = expectedSettlementDate
   }
 
   get input(): IReceptionCaregivingRoundUpdate {
@@ -100,6 +107,7 @@ class ReceptionCaregivingRoundInput {
       startDateTime:
         (Boolean(this.startDateTime) && getIsoString(this.startDateTime)) ||
         null,
+      expectedSettlementDate: this.expectedSettlementDate,
     }
   }
 }

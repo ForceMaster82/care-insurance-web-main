@@ -38,6 +38,8 @@ class ReceptionCaregivingRoundResource {
 
   #remarks: string
 
+  #expectedSettlementDate: string | null
+
   constructor(data: IReceptionCaregivingRound) {
     const {
       id,
@@ -53,6 +55,7 @@ class ReceptionCaregivingRoundResource {
       billingProgressingStatus,
       caregiverInfo,
       remarks,
+      expectedSettlementDate,
     } = data
 
     this.#id = id
@@ -72,6 +75,7 @@ class ReceptionCaregivingRoundResource {
     this.#caregiverInfo =
       (caregiverInfo && new CaregiverInfoResource(caregiverInfo)) || null
     this.#remarks = remarks
+    this.#expectedSettlementDate = expectedSettlementDate
   }
 
   get id(): string {
@@ -147,6 +151,10 @@ class ReceptionCaregivingRoundResource {
 
   get remarks(): string {
     return this.#remarks
+  }
+
+  get expectedSettlementDate(): Date | null {
+    return (this.#expectedSettlementDate && new Date(this.#expectedSettlementDate)) || null
   }
 }
 

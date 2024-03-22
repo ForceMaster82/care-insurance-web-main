@@ -173,6 +173,7 @@ export type ReceptionCaregivingRoundData = Pick<
   | 'caregivingRoundClosingReasonType'
   | 'caregivingRoundClosingReasonDetail'
   | 'remarks'
+  | 'expectedSettlementDate'
 > & {
   caregiverInfo: CaregiverInfoData
 }

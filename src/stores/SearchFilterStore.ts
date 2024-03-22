@@ -48,6 +48,7 @@ export interface SearchFilter {
   CITY: string | null
   RECEIVED_PERIOD: ReceivedPeriodOptionValue | null
   NOTIFY_CAREGIVING_PROGRESS: Notify
+  EXPECTED_SETTLEMENT_DATE: string
 }
 
 class SearchFilterStore<K extends keyof SearchFilter> {

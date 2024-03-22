@@ -90,6 +90,7 @@ export type CaregivingRoundsPageSearchFilterKey =
   | 'SETTLEMENT_PROGRESSING_STATUS'
   | 'BILLING_PROGRESSING_STATUS'
   | 'NOTIFY_CAREGIVING_PROGRESS'
+  | 'EXPECTED_SETTLEMENT_DATE'
 
 export type ReceptionsPageSearchFilterKey =
   | 'FROM'

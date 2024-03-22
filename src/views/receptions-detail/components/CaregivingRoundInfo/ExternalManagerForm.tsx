@@ -233,6 +233,13 @@ const CaregivingRoundInfoExternalManagerForm = (
                           </InfoBox>
                         )}
                       </Card.Item>
+                      <Card.Item fixedHeight={false} isOptional title="메모">
+                        <Card.Input
+                            maxLength={MAX_LENGTH.TEXTAREA}
+                            register={register('remarks')}
+                            value={watch('remarks')}
+                        />
+                      </Card.Item>
                     </Card.Row>
                     <Card.Row>
                       <Card.Item title="간병기간">
@@ -260,15 +267,17 @@ const CaregivingRoundInfoExternalManagerForm = (
                           }
                         />
                       </Card.Item>
+                      <Card.Item title="정산예정일자">
+                        <Card.Input
+                            //disabled
+                            max={MAX_DATE_TIME_VALUE}
+                            //readonly
+                            register={register('expectedSettlementDate')}
+                            type="date"
+                        />
+                      </Card.Item>
                     </Card.Row>
                   </Card.RowGroup>
-                  <Card.Item fixedHeight={false} isOptional title="메모">
-                    <Card.Input
-                      maxLength={MAX_LENGTH.TEXTAREA}
-                      register={register('remarks')}
-                      value={watch('remarks')}
-                    />
-                  </Card.Item>
                 </Card.Row>
               </Card.RowGroup>
             </Box>
@@ -320,12 +329,18 @@ const CaregivingRoundInfoExternalManagerForm = (
                   </Box>
                 </Card.Item>
                 <Card.Item fixedHeight={false} title="생년월일">
-                  <FormattingInput
-                    constraints={receptionCaregivingRoundConstraints}
-                    control={control}
-                    fieldName="caregiverInfo.birthDate"
-                    formatter={formatDateText}
-                    hint="'-' 없이 생년월일 8자리 입력"
+                  {/*<FormattingInput*/}
+                  {/*  constraints={receptionCaregivingRoundConstraints}*/}
+                  {/*  control={control}*/}
+                  {/*  fieldName="caregiverInfo.birthDate"*/}
+                  {/*  formatter={formatDateText}*/}
+                  {/*  hint="'-' 없이 생년월일 8자리 입력"*/}
+                  {/*/>*/}
+                  <Card.Input
+                      register={register(
+                          'caregiverInfo.birthDate',
+                          receptionCaregivingRoundConstraints['caregiverInfo.birthDate'],
+                      )}
                   />
                 </Card.Item>
               </Card.Row>

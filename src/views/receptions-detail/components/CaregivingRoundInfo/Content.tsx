@@ -14,7 +14,7 @@ import {
   formatPhoneNumberWithHyphen,
   formatStaticNumberWithComma,
 } from '../../../../utils/formatter'
-import {formatDateTime} from '../../../../utils/date'
+import {formatDate, formatDateTime} from '../../../../utils/date'
 import {generatePeriodText} from '../../../../utils/text-transformation'
 import {ReceptionProgressingStatus} from '../../../../types'
 import SectionHeader from './SectionHeader'
@@ -118,6 +118,7 @@ const CaregivingRoundInfoContent = (props: IProps): ReactElement => {
                             </InfoBox>
                           )}
                         </Card.Item>
+                        <Card.Item title="메모">{data.remarks}</Card.Item>
                       </Card.Row>
                       <Card.Row>
                         <Card.Item title="간병기간">
@@ -131,9 +132,14 @@ const CaregivingRoundInfoContent = (props: IProps): ReactElement => {
                           {data.caregivingPeriod &&
                             generatePeriodText(data.caregivingPeriod)}
                         </Card.Item>
+                        <Card.Item title="정산예정일자">
+                          {(data.expectedSettlementDate &&
+                              formatDate(data.expectedSettlementDate)) || ("-"
+                          )}
+                        </Card.Item>
                       </Card.Row>
                     </Card.RowGroup>
-                    <Card.Item title="메모">{data.remarks}</Card.Item>
+
                   </Card.Row>
                 )}
               </Card.RowGroup>

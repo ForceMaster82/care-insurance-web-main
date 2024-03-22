@@ -77,6 +77,8 @@ const CaregivingRoundsPage: NextPage = observer(() => {
             settlementProgressingStatusQueryValue) || ['NOT_STARTED'],
         UNTIL: pageQuery?.get('until') || '',
         NOTIFY_CAREGIVING_PROGRESS: NotifyQueryValue,
+        EXPECTED_SETTLEMENT_DATE:
+          pageQuery?.get('expected_settlement_date') || '',
       }),
   )
 
@@ -103,6 +105,7 @@ const CaregivingRoundsPage: NextPage = observer(() => {
     until: searchFilterStore.searchFilter.UNTIL,
     user,
     notify: searchFilterStore.searchFilter.NOTIFY_CAREGIVING_PROGRESS,
+    expectedSettlementDate: searchFilterStore.searchFilter.EXPECTED_SETTLEMENT_DATE,
   })
 
   const handleOnClickListItem = (receptionId: string): void => {
