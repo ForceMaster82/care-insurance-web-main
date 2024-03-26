@@ -33,7 +33,10 @@ export type StatisticMonthlyReconciliationPageSearchFilterKey =
   | 'RECONCILED_YEAR'
   | 'RECONCILED_MONTH'
 
-export type StatisticDailyBillingTransactionPageSearchFilterKey = 'DATE'
+export type StatisticDailyBillingTransactionPageSearchFilterKey =
+  | 'DATE'
+  | 'UNTIL'
+  | 'FROM'
 
 export type StatisticDailySettlementTransactionPageSearchFilterKey =
   | 'DATE'

@@ -8,7 +8,7 @@ import {stringify} from 'qs'
 import {isServer} from '@caredoc/utils-web'
 import {RECEPTIONS_PATH} from '../../constants/route-paths'
 import SearchFilterStore, {SearchFilter} from '../../stores/SearchFilterStore'
-import {CaregivingRoundsPageSearchFilterKey, StatisticDailySettlementTransactionPageSearchFilterKey} from '../../types'
+import {StatisticDailySettlementTransactionPageSearchFilterKey} from '../../types'
 import {formatDate, getToday} from '../../utils/date'
 import Layout from '~templates/layouts/Layout'
 import StatisticDailySettlementTransactionView from '~views/statistic-daily-settlement-transaction'
@@ -17,10 +17,6 @@ import useDailySettlementTransactionStatistic from '~hooks/api/settlement/use-da
 import useDailyCaregivingRoundSettlementTransactionStatisticList from '~hooks/api/settlement/use-daily-caregiving-round-settlement-transaction-statistic-list'
 import {DEFAULT_PAGE_SIZE} from '~constants/data'
 import {SearchCategory} from '~types'
-import {fetcher} from "utils/fetcher";
-import {getFilenameFromHttpHeaders} from "utils/get-filename-from-http-headers";
-import {format} from "date-fns";
-import {downloadFile} from "utils/download-file";
 
 const StatisticDailySettlementTransactionPage: NextPage = observer(() => {
   const pageQuery = isServer() ? null : new URL(document.URL).searchParams
@@ -42,7 +38,7 @@ const StatisticDailySettlementTransactionPage: NextPage = observer(() => {
                 (pageQuery?.get('search-category') as SearchCategory | undefined) ||
                 'patientName',
             SEARCH_KEYWORD: pageQuery?.get('search-keyword') || '',
-            UNTIL: '',
+            UNTIL: pageQuery?.get('from') || formatDate(getToday()),
             FROM: '',
         },
       ),
@@ -77,7 +73,7 @@ const StatisticDailySettlementTransactionPage: NextPage = observer(() => {
           return
       }
 
-      const path = `${process.env.NEXT_PUBLIC_API_URL}/api/v2/statistic/settlementExcelDown?from=${expectedCaregivingStartDate}&until=${expectedCaregivingStartDate}`
+      const path = `${process.env.NEXT_PUBLIC_API_URL}/api/v2/statistic/settlementExcelDown?from=${expectedCaregivingStartDate}&until=${expectedCaregivingEndDate}`
       document.location.href = path
   }
 

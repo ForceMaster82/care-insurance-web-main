@@ -1,4 +1,4 @@
-import {Box} from '@caredoc/ui-web'
+import {Box, Button} from '@caredoc/ui-web'
 import React, {ReactElement} from 'react'
 import SearchDatePicker from '../../components/SearchDatePicker'
 import SubPageTabBar from '../../components/SubPageTabBar'
@@ -12,6 +12,7 @@ import Pagination from '~components/Pagination'
 import DailyBillingTransactionStatisticResource from '~models/dto/daily-billing-transaction-statistic/Resource'
 import DailyCaregivingRoundBillingTransactionStatisticResource from '~models/dto/daily-caregiving-round-billing-transaction-statistic/Resource'
 import {IPaginationResponse} from '~types/dto'
+import SearchPeriodPicker from "components/SearchPeriodPicker";
 
 interface IProps {
   billingTransactionList?: IPaginationResponse<DailyCaregivingRoundBillingTransactionStatisticResource>
@@ -27,6 +28,10 @@ interface IProps {
   >
   setPageNumber: (page: number) => void
   totalTransactionAmount?: DailyBillingTransactionStatisticResource
+  onClickExcelDownload: (
+      expectedCaregivingStartDate: string,
+      expectedCaregivingEndDate: string,
+  ) => () => Promise<void>
 }
 
 const StatisticDailyBillingTransactionView = (props: IProps): ReactElement => {
@@ -37,6 +42,7 @@ const StatisticDailyBillingTransactionView = (props: IProps): ReactElement => {
     setPageNumber,
     searchFilter,
     onChangeSearchFilter,
+    onClickExcelDownload,
   } = props
 
   return (
@@ -51,6 +57,29 @@ const StatisticDailyBillingTransactionView = (props: IProps): ReactElement => {
         required
         title="조회일자"
       />
+
+      <Box flexDirection="row" gap="xs">
+        <SearchPeriodPicker
+            endDateString={searchFilter.UNTIL}
+            onChangeEndDate={onChangeSearchFilter('UNTIL')}
+            onChangeStartDate={onChangeSearchFilter('FROM')}
+            startDateString={searchFilter.FROM}
+            title="정산 예정일자"
+        />
+
+        <Button
+            color="primary"
+            disabled={!searchFilter.FROM}
+            onClick={onClickExcelDownload(
+                searchFilter.FROM, searchFilter.UNTIL
+            )}
+            size="sm"
+            variant="primary"
+        >
+          엑셀 다운로드
+        </Button>
+      </Box>
+
       {totalTransactionAmount && (
         <TransactionDashboard
           depositAmount={totalTransactionAmount.totalDepositAmount}

@@ -32,6 +32,8 @@ const StatisticDailyBillingTransactionPage: NextPage = observer(() => {
       new SearchFilterStore<StatisticDailyBillingTransactionPageSearchFilterKey>(
         {
           DATE: pageQuery?.get('date') || formatDate(getToday()),
+            UNTIL: pageQuery?.get('from') || formatDate(getToday()),
+            FROM: '',
         },
       ),
   )
@@ -51,7 +53,19 @@ const StatisticDailyBillingTransactionPage: NextPage = observer(() => {
     router.push(RECEPTIONS_PATH.BILLINGS(receptionId))
   }
 
-  const totalTransactionAmount = useDailyBillingTransactionStatistic({
+    const handleOnClickExcelDownload = (
+        expectedCaregivingStartDate: string,
+        expectedCaregivingEndDate: string,
+    ) => async () => {
+        if (!expectedCaregivingStartDate || !expectedCaregivingEndDate) {
+            return
+        }
+
+        const path = `${process.env.NEXT_PUBLIC_API_URL}/api/v2/statistic/billingExcelDown?from=${expectedCaregivingStartDate}&until=${expectedCaregivingEndDate}`
+        document.location.href = path
+    }
+
+    const totalTransactionAmount = useDailyBillingTransactionStatistic({
     date: searchFilterStore.searchFilter.DATE,
   })
 
@@ -85,6 +99,7 @@ const StatisticDailyBillingTransactionPage: NextPage = observer(() => {
     <Layout currentPage="CARE_STATUS">
       {billingTransactionList ? (
         <StatisticDailyBillingTransactionView
+          onClickExcelDownload={handleOnClickExcelDownload}
           billingTransactionList={billingTransactionList}
           onChangeSearchFilter={handleOnChangeSearchFilter}
           onClickListItemAccidentNumber={handleOnClickListItemAccidentNumber}

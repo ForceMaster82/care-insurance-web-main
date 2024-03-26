@@ -74,6 +74,7 @@ const StatisticDailySettlementTransactionView = (
           onClickSearch={handleOnClickSearch}
       />
 
+      <Box flexDirection="row" gap="xs">
         <SearchPeriodPicker
             endDateString={searchFilter.UNTIL}
             onChangeEndDate={onChangeSearchFilter('UNTIL')}
@@ -93,6 +94,7 @@ const StatisticDailySettlementTransactionView = (
         >
             엑셀 다운로드
         </Button>
+        </Box>
 
       {totalTransactionAmount && (
         <TransactionDashboard
