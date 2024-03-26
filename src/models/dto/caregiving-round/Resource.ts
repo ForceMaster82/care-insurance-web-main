@@ -34,19 +34,22 @@ class CaregivingRoundResource {
 
   #endDateTime: string | null
 
+  #expectedSettlementDate: string | null
+
   constructor(data: {
-    startDateTime: string;
+    startDateTime: string | null
     receptionInfo: CaregivingRoundReceptionInfoResource
-    billingProgressingStatus: BillingProgressingStatus;
-    caregivingRoundNumber: number;
-    caregivingProgressingStatus: CaregivingProgressingStatus;
-    id: string;
-    settlementProgressingStatus: SettlementProgressingStatus;
+    billingProgressingStatus: BillingProgressingStatus
+    caregivingRoundNumber: number
+    caregivingProgressingStatus: CaregivingProgressingStatus
+    id: string
+    settlementProgressingStatus: SettlementProgressingStatus
     caregiverName: string
     caregiverPhoneNumber: string
     caregiverSex: string
     caregiverBirthDate: string
-    endDateTime: string
+    endDateTime: string | null
+    expectedSettlementDate: string | null
   }) {
     const {
       id,
@@ -61,6 +64,7 @@ class CaregivingRoundResource {
       billingProgressingStatus,
       startDateTime,
       endDateTime,
+      expectedSettlementDate,
     } = data
 
     this.#id = id
@@ -75,6 +79,7 @@ class CaregivingRoundResource {
     this.#billingProgressingStatus = billingProgressingStatus
     this.#startDateTime = startDateTime
     this.#endDateTime = endDateTime
+    this.#expectedSettlementDate = expectedSettlementDate
   }
 
   get id(): string {
@@ -123,6 +128,10 @@ class CaregivingRoundResource {
 
   get endDateTime(): Date | null {
     return (this.#endDateTime && new Date(this.#endDateTime)) || null
+  }
+
+  get expectedSettlementDate(): Date | null {
+    return (this.#expectedSettlementDate && new Date(this.#expectedSettlementDate)) || null
   }
 
   get expectedCaregivingPeriod(): Period | null {

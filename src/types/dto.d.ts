@@ -23,6 +23,7 @@ import {
   TransactionType,
   Urgency,
 } from '.'
+import CaregivingRoundReceptionInfoResource from "models/dto/caregiving-round-reception-info/Resource";
 
 export interface IReceptionApplication {
   fileName: string
@@ -528,7 +529,7 @@ export interface IReceptionCaregivingRoundUpdate {
 
 export interface ICaregivingRound {
   id: string
-  receptionInfo: ICaregivingRoundReceptionInfo
+  receptionInfo: CaregivingRoundReceptionInfoResource
   caregivingRoundNumber: number
   caregiverName: string
   caregiverPhoneNumber: string

@@ -20,6 +20,7 @@ type IProps = {
   searchFilter: CaregivingSearchFilter
   user?: UserResource
   notify: Notify
+  expectedSettlementDate: string
 } & PaginationParams &
   PeriodParams &
   SearchQueryParams
@@ -38,6 +39,7 @@ const useCaregivingRoundList = (
     searchCategory,
     searchKeyword,
     notify,
+    expectedSettlementDate,
   } = props
 
   const path =
@@ -59,6 +61,7 @@ const useCaregivingRoundList = (
       query: searchQuery,
       until,
       notify,
+      expectedSettlementDate,
     }),
     ...searchFilterQueryData,
   ])
@@ -72,6 +75,7 @@ const useCaregivingRoundList = (
     searchFilter,
     until,
     notify,
+    expectedSettlementDate,
   }
 
   const {data} = useQuery({
