@@ -43,6 +43,11 @@ export const SETTLEMENTS_SUB_PAGE_TABS: SubPageTab<SettlementsPageKey>[] = [
     text: '입출금 관리',
     value: 'IN_TRANSACTION',
   },
+  {
+    path: SETTLEMENTS_PATH.LOG_TRANSACTION,
+    text: '입출금 내역',
+    value: 'LOG_TRANSACTION',
+  },
 ]
 
 export const BILLINGS_SUB_PAGE_TABS: SubPageTab<BillingsPageKey>[] = [

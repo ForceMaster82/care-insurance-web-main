@@ -28,6 +28,7 @@ export const RECEPTIONS_PATH: RoutePath<ReceptionsPathKey> = {
 export const SETTLEMENTS_PATH: RoutePath<SettlementsPageKey> = {
   IN_TRANSACTION: () => '/settlements/in-transaction',
   WAITING: () => '/settlements/waiting',
+  LOG_TRANSACTION: () => '/settlements/log-transaction',
 }
 
 export const BILLINGS_PATH: RoutePath<BillingsPageKey> = {

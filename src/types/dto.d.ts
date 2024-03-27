@@ -562,6 +562,7 @@ export interface ISettlement {
   lastTransactionDateTime: string | null
   settlementCompletionDateTime: null | string
   settlementManagerId: null | string
+  transactionType: null | string
 }
 
 export interface ISettlementUpdate {

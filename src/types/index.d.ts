@@ -130,7 +130,7 @@ export type StatisticPageKey =
 
 export type BillingsPageKey = 'WAITING' | 'WAITING_DEPOSIT' | 'IN_TRANSACTION'
 
-export type SettlementsPageKey = 'WAITING' | 'IN_TRANSACTION'
+export type SettlementsPageKey = 'WAITING' | 'IN_TRANSACTION' | 'LOG_TRANSACTION'
 
 export type ReceptionsPathKey =
   | 'INDEX'

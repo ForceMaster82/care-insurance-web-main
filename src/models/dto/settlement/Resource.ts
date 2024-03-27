@@ -38,6 +38,8 @@ class SettlementResource {
 
   #settlementManagerId: null | string
 
+  #transactionType: null | string
+
   constructor(data: ISettlement) {
     this.#id = data.id
     this.#receptionId = data.receptionId
@@ -57,10 +59,15 @@ class SettlementResource {
     this.#lastTransactionDateTime = data.lastTransactionDateTime
     this.#settlementCompletionDateTime = data.settlementCompletionDateTime
     this.#settlementManagerId = data.settlementManagerId
+    this.#transactionType = data.transactionType
   }
 
   get id(): string {
     return this.#id
+  }
+
+  get transactionType(): string | null {
+    return this.#transactionType
   }
 
   get receptionId(): string {
